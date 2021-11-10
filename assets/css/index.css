@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100&display=swap');
+
+.circle{
+    line-height: 50px;
+}
+
+.mode-one, .mode-two{
+    font-family: 'Fira Sans';
+    text-decoration: none;
+    line-height: 65px;
+}
+
+.mode-one:hover, .mode-two:hover{
+    background-color: #3A546F;
+}
+
+.parent{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.parent:nth-of-type(1){
+    margin-top: 60px;
+}
+
+.parent p{
+    width: 25%;
+    display: inline-block;
+    line-height: 25px;
+    font-family: 'Hind Guntur';
+}
+
+.parent div{
+    display:inline-block;
+    width:5%;
+}
+
+.parent h2{
+    display:inline-block;
+    width:25%;
+    text-decoration: underline;
+    color:whitesmoke;
+    font-family: 'Hind Guntur';
+}
+
+p{
+    color:white;
+}
