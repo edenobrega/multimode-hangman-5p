@@ -7,7 +7,8 @@
 .mode-one, .mode-two{
     font-family: 'Fira Sans';
     text-decoration: none;
-    line-height: 65px;
+    line-height: 35px;
+    font-size:20px;
 }
 
 .mode-one:hover, .mode-two:hover{
@@ -20,14 +21,15 @@
 }
 
 .parent:nth-of-type(1){
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .parent p{
-    width: 25%;
+    width: 40%;
     display: inline-block;
     line-height: 25px;
     font-family: 'Hind Guntur';
+    font-size: 0.95rem;
 }
 
 .parent div{
@@ -37,12 +39,46 @@
 
 .parent h2{
     display:inline-block;
-    width:25%;
+    width:40%;
     text-decoration: underline;
     color:whitesmoke;
-    font-family: 'Hind Guntur';
+    font-family: 'Fira Sans';
 }
 
 p{
     color:white;
+}
+
+/* Tablet */
+@media only screen and (min-width: 600px) {
+h1{
+    /* color:blue; */
+}
+}
+
+/* Desktop */
+@media only screen and (min-width: 992px) {
+h1{
+    /* color:red; */
+}
+}
+
+/* Large Desktop */
+@media only screen and (min-width: 1200px) {
+    h1{
+        /* color:yellow; */
+    }
+
+    .parent h2{
+        width:30%;
+    }
+
+    .parent:nth-of-type(1){
+        margin-top: 60px;
+    }
+
+    .parent p{
+        width: 30%;
+        font-size: 1rem;
+    }
 }
