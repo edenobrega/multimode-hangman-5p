@@ -46,7 +46,7 @@
 	height: 50px;
 	width: 50px;
 	text-align: center;
-	position: fixed;
+	position: absolute;
 	line-height: 50px;
     color:whitesmoke;
     font-family: "Fira sans";
@@ -54,4 +54,51 @@
 
 .clickable:hover{
     background-color: #3A546F;
+}
+
+#answer-box > div{
+    margin-right:5px;
+}
+
+.hint-box{
+    width:fit-content;
+    margin: 0 auto;
+    border: 1px solid violet;
+}
+
+.hint-text{
+    font-family: "Fira sans";
+    color:whitesmoke;
+    padding:5px;
+}
+
+.vis-flip{
+    visibility: visible;
+    display:inherit;
+}
+.vis-flip-2{
+    visibility: hidden;
+    display:none;
+}
+
+/* Tablet */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Desktop */
+@media only screen and (min-width: 992px) {
+    .vis-flip{
+        visibility: hidden;
+        display:none;
+    }
+    .vis-flip-2{
+        visibility: visible;
+        display:inherit;
+    }
+}
+
+/* Large Desktop */
+@media only screen and (min-width: 1200px) {
+
 }
