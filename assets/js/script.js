@@ -6,31 +6,49 @@ let maxTime;
 let guessesLeft = 11;
 let timed = true;
 let active = false;
+let phrase = true;
 
 // loadValues("assets/answers/phrases.csv");
 // selectWord();
-startGame("assets/answers/phrases.csv");
+startGame();
 
-function loadValues(fileName){
+function loadValues(){
     var raw_values;
+    var fileName;
+    if(phrase){
+        fileName = "assets/answers/phrases.csv"
+    }
+    else{
+        fileName = "assets/answers/words.csv";
+    }
     return fetch(fileName)
         .then(response => response.text())
         .then(text => raw_values = text.toLowerCase().split(','))
         .then(x => {
-            for (let i = 1; i < raw_values.length; i+=2) {
-                console.log("running");
-                loaded_values.push({
-                        answer: raw_values[i].trim(), // word/phrase to guess
-                        hint: raw_values[i+1].trim(), // <
-                        letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
-                        guessedAnswers: [] // <
-                    }
-                );
+            if(phrase){
+                for (let i = 1; i < raw_values.length; i+=2) {
+                    loaded_values.push({
+                            answer: raw_values[i].trim(), // word/phrase to guess
+                            hint: raw_values[i+1].trim(), // <
+                            letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
+                            guessedAnswers: [] // <
+                    });  
+                }
+            }
+            else{
+                for (let i = 1; i < raw_values.length; i++) {
+                    loaded_values.push({
+                            answer: raw_values[i].trim(), // word/phrase to guess
+                            letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
+                            guessedAnswers: [] // <
+                    });  
+                }
             }
         });
 }
 
 function selectWord(){
+    console.log(loaded_values.length);
     currentWord = Math.floor(Math.random() * loaded_values.length);
 }
 
@@ -97,7 +115,7 @@ function startGame(fileName){
             console.log(loaded_values[currentWord].answer);
             for (let index = 0; index < loaded_values[currentWord].answer.length; index++) {
                 if(loaded_values[currentWord].answer[index] === " "){
-                    newHtml += `<div id="letter-${index}" class="letter-box"><p id="letter-${index}-text" class="box-letter"> </p></div>`;
+                    newHtml += `<br class="vis-flip"><div id="letter-${index}" class="letter-box vis-flip-2"><p id="letter-${index}-text" class="box-letter"> </p></div>`;
                 }
                 else{
                     newHtml += `<div id="letter-${index}" class="letter-box letter-red"><p id="letter-${index}-text" class="box-letter">?</p></div>`;                    
@@ -105,8 +123,26 @@ function startGame(fileName){
             }
             lettersParentHTML.outerHTML = '<div id="answer-box" class="word-box">' + newHtml + '</div>';
 
+            if(phrase){
+                document.getElementsByClassName("parent")[0];
+
+                var hintElement = document.createElement("div");
+                hintElement.classList.add("parent");
+                document.getElementsByClassName("parent")[0].parentNode.insertBefore(hintElement, document.getElementsByClassName("parent")[0].nextSibling);
+                
+                var textElementParent = document.createElement("div")
+                textElementParent.classList.add("hint-box");
+                hintElement.appendChild(textElementParent);
+
+                var textElement = document.createElement("p");
+                textElement.classList.add("hint-text");
+                textElement.innerText = "Hint : " +loaded_values[currentWord].hint;
+                textElementParent.appendChild(textElement);
+
+            }
+
             if(timed){
-                startTimer(120);                
+                startTimer(60);                
             }
             active = true;
         });
