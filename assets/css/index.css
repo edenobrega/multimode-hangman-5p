@@ -49,26 +49,8 @@ p{
     color:white;
 }
 
-/* Tablet */
-@media only screen and (min-width: 600px) {
-h1{
-    /* color:blue; */
-}
-}
-
-/* Desktop */
-@media only screen and (min-width: 992px) {
-h1{
-    /* color:red; */
-}
-}
-
 /* Large Desktop */
 @media only screen and (min-width: 1200px) {
-    h1{
-        /* color:yellow; */
-    }
-
     .parent h2{
         width:30%;
     }
