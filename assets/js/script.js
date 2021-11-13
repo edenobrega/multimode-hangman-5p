@@ -122,11 +122,21 @@ function endGame(){
         window.clearInterval(timerOnscreen);        
     }
     if(!(checkCompletion())){
+        // get missing letters
         let missing = loaded_values[currentWord].letterAnswers.filter(val => !loaded_values[currentWord].guessedAnswers.includes(val));
 
-
         for (let index = 0; index < missing.length; index++) {
-           
+            // get each location of those missing letters
+            var locations = [];
+            var idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase());
+            while(idx != -1){
+                locations.push(idx);
+                idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase(), idx+1);
+            }            
+            // change the text of each of those
+            for (let index2 = 0; index2 < locations.length; index2++) {
+                document.getElementById(`letter-${locations[index2]}-text`).innerText = missing[index].toUpperCase();
+            }
         }
     }
 
