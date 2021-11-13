@@ -5,6 +5,7 @@ let timerOnscreen;
 let maxTime;
 let guessesLeft = 11;
 let timed = true;
+let active = false;
 
 // loadValues("assets/answers/phrases.csv");
 // selectWord();
@@ -19,10 +20,10 @@ function loadValues(fileName){
             for (let i = 1; i < raw_values.length; i+=2) {
                 console.log("running");
                 loaded_values.push({
-                        answer: raw_values[i].trim(),
-                        hint: raw_values[i+1].trim(),
-                        letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))),
-                        guessedAnswers: []
+                        answer: raw_values[i].trim(), // word/phrase to guess
+                        hint: raw_values[i+1].trim(), // <
+                        letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
+                        guessedAnswers: [] // <
                     }
                 );
             }
@@ -34,13 +35,22 @@ function selectWord(){
 }
 
 function attemptGuess(character){
+    if(!active){
+        return;
+    }
+
     if(loaded_values[currentWord].letterAnswers.includes(character)){
+        // Add letter to guessed answers list 
         loaded_values[currentWord].guessedAnswers.push(character);
+
+        // Remove clickable onscreen letter and change styling to reflect that
         var ele = document.getElementById(character.toUpperCase());
         ele.classList.remove("clickable");
         ele.classList.remove("letter-blue");
         ele.classList.add("letter-green");
+        ele.removeAttribute("onclick");
 
+        // Get every location of that letter
         var locations = [];
         var idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase());
         while(idx != -1){
@@ -48,6 +58,7 @@ function attemptGuess(character){
             idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase(), idx+1);
         }
 
+        // Use locations to set styling and contents
         for (let index = 0; index < locations.length; index++) {
             document.getElementById(`letter-${locations[index]}-text`).innerText = character.toUpperCase();
             var changeSquare = document.getElementById(`letter-${locations[index]}`);  
@@ -55,18 +66,18 @@ function attemptGuess(character){
             changeSquare.classList.add("letter-green");               
         }
 
-        if(loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",")){
-            console.log("obtuse rubber goose");
+        if(checkCompletion()){
             endGame();
         }
     }
     else{
+        // Get the clicked letter and disable it
         var changeSquare = document.getElementById(character.toUpperCase());
         changeSquare.classList.remove("letter-blue");
         changeSquare.classList.remove("clickable");
         changeSquare.classList.add("letter-red");
+        changeSquare.removeAttribute("onclick");
         changeSquare.getElementsByTagName("p")[0].style.textDecoration = "line-through";
-
 
         guessesLeft--;
         document.getElementById("guesses-text").innerText = guessesLeft;
@@ -95,8 +106,9 @@ function startGame(fileName){
             lettersParentHTML.outerHTML = '<div id="answer-box" class="word-box">' + newHtml + '</div>';
 
             if(timed){
-                startTimer(5);                
+                startTimer(120);                
             }
+            active = true;
         });
     
     guessesLeft = 11;
@@ -104,8 +116,20 @@ function startGame(fileName){
 }
 
 function endGame(){
-    window.clearTimeout(timer);
-    window.clearInterval(timerOnscreen);
+    active = false;
+    if(timed){
+        window.clearTimeout(timer);
+        window.clearInterval(timerOnscreen);        
+    }
+    if(!(checkCompletion())){
+        let missing = loaded_values[currentWord].letterAnswers.filter(val => !loaded_values[currentWord].guessedAnswers.includes(val));
+
+
+        for (let index = 0; index < missing.length; index++) {
+           
+        }
+    }
+
 }
 
 function resetGame(){
@@ -126,4 +150,11 @@ function updateOnScreenTimer(){
     if(maxTime == -1){
         window.clearInterval(timerOnscreen);
     }
+}
+
+function checkCompletion(){
+    if(loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",")){
+        return true;
+    }
+    return false;
 }
