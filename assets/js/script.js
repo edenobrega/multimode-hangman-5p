@@ -54,6 +54,11 @@ function attemptGuess(character){
             changeSquare.classList.remove("letter-red");
             changeSquare.classList.add("letter-green");               
         }
+
+        if(loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",")){
+            console.log("obtuse rubber goose");
+            endGame();
+        }
     }
     else{
         var changeSquare = document.getElementById(character.toUpperCase());
