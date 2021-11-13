@@ -1,0 +1,57 @@
+.circle{
+    line-height: 65px;
+}
+
+.parent{
+    padding-top:50px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.word-box{
+    border:1px solid violet;
+    padding: 50px;
+    margin: 0 auto;
+    width:fit-content;
+    display:inline-block;
+}
+
+.guesses-box{
+    border: 1px solid violet;
+    display:inline-block;
+    padding:50px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+.letter-box{
+    height:50px;
+    width:50px;
+    display:inline-block;
+}
+
+.letter-red{
+    border: 1px solid red;
+}
+
+.letter-green{
+    border: 1px solid green;
+}
+
+.letter-blue{
+    border: 1px solid blue;
+}
+
+.box-letter {
+	height: 50px;
+	width: 50px;
+	text-align: center;
+	position: fixed;
+	line-height: 50px;
+    color:whitesmoke;
+    font-family: "Fira sans";
+}
+
+.clickable:hover{
+    background-color: #3A546F;
+}
