@@ -4,12 +4,21 @@ let timer;
 let timerOnscreen;
 let maxTime;
 let guessesLeft = 11;
-let timed = true;
-let active = false;
-let phrase = true;
 
-// loadValues("assets/answers/phrases.csv");
-// selectWord();
+var timed = false;
+let active = false;
+var phrase = false;
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+if(!(urlParams.get("phrase") === null)){
+    phrase = urlParams.get("phrase") == "true";
+}
+if(!(urlParams.get("timed") === null)){
+    timed = urlParams.get("timed") == "true";
+}
+
 startGame();
 
 function loadValues(){
@@ -141,8 +150,13 @@ function startGame(fileName){
 
             }
 
-            if(timed){
+            if(timed === true){
                 startTimer(60);                
+            }
+            else{
+                var timerParent = document.getElementById("timer-parent");
+                timerParent.style.visibility = "hidden";
+                timerParent.style.display = "none";
             }
             active = true;
         });
