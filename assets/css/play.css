@@ -21,6 +21,10 @@ p{
     border: 1px solid red;
 }
 
+.blue-border{
+    border: 1px solid blue;
+}
+
 /* timer */
 .timer-square{
     height:150px;
@@ -91,4 +95,42 @@ p{
     width:50px;
     height:50px;
     line-height:50px;
+}
+
+.hint-box {
+	padding: 50px;
+	width: fit-content;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 25px;
+}
+
+/* keyboard */
+.keyboard-parent{
+    width:100%;
+    margin-top: 30px;
+}
+
+.key-box{
+    width:50px;
+    height:50px;
+    display:inline-block;
+    margin:3px;
+}
+
+.keys-box{
+    padding:50px;
+    width:fit-content;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.key-letter{
+    height:50px;
+    width:50px;
+    line-height: 50px;
+}
+
+.clickable:hover{
+    background-color: #3A546F;
 }
