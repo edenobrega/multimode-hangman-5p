@@ -1,104 +1,94 @@
-.circle{
-    line-height: 65px;
-}
-
 .parent{
-    padding-top:50px;
+    display: grid; 
+    grid-template-columns: 0.1fr 0.1fr 0.1fr; 
+    grid-gap: 0px;  
+    width: fit-content; 
     margin: 0 auto;
+    margin-top:50px;
+}
+
+p{
+    color:whitesmoke;
     text-align: center;
+    font-family: "fira sans";
 }
 
-.word-box{
-    border:1px solid violet;
-    padding: 50px;
-    margin: 0 auto;
-    width:fit-content;
-    display:inline-block;
-}
-
-.guesses-box{
+.violet-border{
     border: 1px solid violet;
-    display:inline-block;
-    padding:50px;
-    margin-right: 10px;
-    margin-bottom: 20px;
 }
 
-.letter-box{
-    height:50px;
-    width:50px;
-    display:inline-block;
-}
-
-.letter-red{
+.red-border{
     border: 1px solid red;
 }
 
-.letter-green{
-    border: 1px solid green;
+/* timer */
+.timer-square{
+    height:150px;
+    width:150px;
 }
 
-.letter-blue{
-    border: 1px solid blue;
-}
-
-.box-letter {
-	height: 50px;
-	width: 50px;
-	text-align: center;
-	position: absolute;
-	line-height: 50px;
-    color:whitesmoke;
-    font-family: "Fira sans";
-}
-
-.clickable:hover{
-    background-color: #3A546F;
-}
-
-#answer-box > div{
-    margin-right:5px;
-}
-
-.hint-box{
-    width:fit-content;
+.timer-inner-square{
+    width:100px;
+    height:100px;
+    position: relative;
+    top:50%;
     margin: 0 auto;
-    border: 1px solid violet;
+    margin-top: -50px;
 }
 
-.hint-text{
-    font-family: "Fira sans";
-    color:whitesmoke;
-    padding:5px;
+.timer-text{
+    position: absolute;
+    width:100px;
+    height:100px;
+    line-height:100px;
+    font-size:32px;
 }
 
-.vis-flip{
-    visibility: visible;
-    display:inherit;
-}
-.vis-flip-2{
-    visibility: hidden;
-    display:none;
+/* chances */
+.chances-square{
+    height:150px;
+    width:150px;
+    margin: 0 50px;
 }
 
-/* Tablet */
-@media only screen and (min-width: 600px) {
-
+.chances-inner-square{
+    width:50px;
+    height:50px;
+    position: relative;
+    top:50%;
+    margin: 0 auto;
+    margin-top:-25px;
 }
 
-/* Desktop */
-@media only screen and (min-width: 992px) {
-    .vis-flip{
-        visibility: hidden;
-        display:none;
-    }
-    .vis-flip-2{
-        visibility: visible;
-        display:inherit;
-    }
+.chances-text{
+    position: absolute;
+    width:50px;
+    height:50px;
+    line-height:50px;
 }
 
-/* Large Desktop */
-@media only screen and (min-width: 1200px) {
+/* word */
+.word-square{
+    height:150px;
+    width: fit-content; 
 
+    display: grid; 
+    grid-template-columns: 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr; 
+    grid-gap: 5px; 
+}
+
+.word-inner-square{
+    width:50px;
+    height:50px;
+    position: relative;
+    top:50%;
+    margin: 0 auto;
+    margin-top:-25px;
+}
+
+.word-text{
+    position: absolute;
+    width:50px;
+    height:50px;
+    line-height:50px;
 }

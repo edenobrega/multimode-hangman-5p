@@ -37,56 +37,49 @@
 
         <main>
             <div class="parent">
-                <div id="timer-parent" class="guesses-box">
-                    <div class="letter-box letter-red">
-                        <p id="timer-text" class="box-letter">n/a</p>
-                    </div>
-                </div>      
-
-                <div class="guesses-box">
-                    <div class="letter-box letter-red">
-                        <p id="guesses-text" class="box-letter"></p>
+                <!-- timer -->
+                <div class="timer-square violet-border">
+                    <div class="timer-inner-square red-border">
+                        <p class="timer-text">999</p>
                     </div>
                 </div>
 
-                <div id="answer-box" class="word-box">
-
+                <!-- chances -->
+                <div class="chances-square violet-border">
+                    <div class="chances-inner-square red-border">
+                        <p class="chances-text">?</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="parent">
-                <div class="word-box">
-                    <div id="A" class="letter-box letter-blue clickable" onclick="attemptGuess('a')"><p class="box-letter">A</p></div>
-                    <div id="B" class="letter-box letter-blue clickable" onclick="attemptGuess('b')"><p class="box-letter">B</p></div>
-                    <div id="C" class="letter-box letter-blue clickable" onclick="attemptGuess('c')"><p class="box-letter">C</p></div>
-                    <div id="D" class="letter-box letter-blue clickable" onclick="attemptGuess('d')"><p class="box-letter">D</p></div>
-                    <div id="E" class="letter-box letter-blue clickable" onclick="attemptGuess('e')"><p class="box-letter">E</p></div>
-                    <div id="F" class="letter-box letter-blue clickable" onclick="attemptGuess('f')"><p class="box-letter">F</p></div>
-                    <div id="G" class="letter-box letter-blue clickable" onclick="attemptGuess('g')"><p class="box-letter">G</p></div>
-                    <div id="H" class="letter-box letter-blue clickable" onclick="attemptGuess('h')"><p class="box-letter">H</p></div>
-                    <div id="I" class="letter-box letter-blue clickable" onclick="attemptGuess('i')"><p class="box-letter">I</p></div>
-                    <div id="J" class="letter-box letter-blue clickable" onclick="attemptGuess('j')"><p class="box-letter">J</p></div>
-                    <div id="K" class="letter-box letter-blue clickable" onclick="attemptGuess('k')"><p class="box-letter">K</p></div>
-                    <div id="L" class="letter-box letter-blue clickable" onclick="attemptGuess('l')"><p class="box-letter">L</p></div>
-                    <br>
-                    <div id="M" class="letter-box letter-blue clickable" onclick="attemptGuess('m')"><p class="box-letter">M</p></div>
-                    <div id="N" class="letter-box letter-blue clickable" onclick="attemptGuess('n')"><p class="box-letter">N</p></div>
-                    <div id="O" class="letter-box letter-blue clickable" onclick="attemptGuess('o')"><p class="box-letter">O</p></div>
-                    <div id="P" class="letter-box letter-blue clickable" onclick="attemptGuess('p')"><p class="box-letter">P</p></div>
-                    <div id="Q" class="letter-box letter-blue clickable" onclick="attemptGuess('q')"><p class="box-letter">Q</p></div>
-                    <div id="R" class="letter-box letter-blue clickable" onclick="attemptGuess('r')"><p class="box-letter">R</p></div>
-                    <div id="S" class="letter-box letter-blue clickable" onclick="attemptGuess('s')"><p class="box-letter">S</p></div>
-                    <div id="T" class="letter-box letter-blue clickable" onclick="attemptGuess('t')"><p class="box-letter">T</p></div>
-                    <div id="U" class="letter-box letter-blue clickable" onclick="attemptGuess('u')"><p class="box-letter">U</p></div>
-                    <div id="V" class="letter-box letter-blue clickable" onclick="attemptGuess('v')"><p class="box-letter">V</p></div>
-                    <div id="W" class="letter-box letter-blue clickable" onclick="attemptGuess('w')"><p class="box-letter">W</p></div>
-                    <div id="X" class="letter-box letter-blue clickable" onclick="attemptGuess('x')"><p class="box-letter">X</p></div>
-                    <div id="Y" class="letter-box letter-blue clickable" onclick="attemptGuess('y')"><p class="box-letter">Y</p></div>
-                    <div id="Z" class="letter-box letter-blue clickable" onclick="attemptGuess('z')"><p class="box-letter">Z</p></div>      
+                <!-- word -->
+                <div class="word-square violet-border">
+                    <div class="word-inner-square">
+
+                    </div>
+
+                    <div class="word-inner-square red-border">
+                        <p class="word-text">?</p>
+                    </div>
+
+                    <div class="word-inner-square red-border">
+                        <p class="word-text">?</p>
+                    </div>
+
+                    <div class="word-inner-square red-border">
+                        <p class="word-text">?</p>
+                    </div>
+
+                    <div class="word-inner-square red-border">
+                        <p class="word-text">?</p>
+                    </div>
+
+                    <div class="word-inner-square">
+
+                    </div>
                 </div>
             </div>
         </main>
 
-        <script src="assets/js/script.js"></script>
+        <!-- <script src="assets/js/script.js"></script> -->
     </body>
 </html>
