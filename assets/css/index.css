@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100&display=swap');
 
+main{
+    text-align: center;
+}
+
 .mode-button{
     font-family: 'Fira Sans';
     text-decoration: none;
@@ -7,52 +11,25 @@
     font-size:20px;
 }
 
-.parent{
-    text-align: center;
-    margin-top: 10px;
-}
-
-.parent:nth-of-type(1){
+.parent-1, .parent-2{
+    /* display: inline-block; */
     margin-top: 40px;
 }
 
-.parent p{
-    width: 40%;
-    display: inline-block;
+.parent-1 p, .parent-2 p{
     line-height: 25px;
     font-family: 'Hind Guntur';
     font-size: 0.95rem;
+    color:whitesmoke;
 }
 
-.parent div{
-    display:inline-block;
-    width:5%;
-}
-
-.parent h2{
-    display:inline-block;
-    width:40%;
+.parent-1 h2, .parent-2 h2{
     text-decoration: underline;
     color:whitesmoke;
     font-family: 'Fira Sans';
 }
 
-p{
-    color:white;
-}
-
-/* Large Desktop */
-@media only screen and (min-width: 1200px) {
-    .parent h2{
-        width:30%;
-    }
-
-    .parent:nth-of-type(1){
-        margin-top: 60px;
-    }
-
-    .parent p{
-        width: 30%;
-        font-size: 1rem;
-    }
+label{
+    color:whitesmoke;
+    font-family: "Hind Guntur";
 }
