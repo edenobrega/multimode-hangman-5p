@@ -1,3 +1,4 @@
+/* jshint esversion: 8 */
 let loaded_values = []; 
 let currentWord;
 let timer;
@@ -5,27 +6,33 @@ let timerOnscreen;
 let maxTime;
 let guessesLeft = 11;
 
-var timed = false;
+var timed = true;
 let active = false;
-var phrase = false;
+var phrase = true;
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
-if(!(urlParams.get("phrase") === null)){
+if(urlParams.get("phrase") !== null){
     phrase = urlParams.get("phrase") == "true";
 }
-if(!(urlParams.get("timed") === null)){
+if(urlParams.get("timed") !== null){
     timed = urlParams.get("timed") == "true";
 }
 
+document.getElementById("next").addEventListener("click", reload);
+
 startGame();
+
+function reload(){
+    window.location.reload();
+}
 
 function loadValues(){
     var raw_values;
     var fileName;
     if(phrase){
-        fileName = "assets/answers/phrases.csv"
+        fileName = "assets/answers/phrases.csv";
     }
     else{
         fileName = "assets/answers/words.csv";
@@ -34,24 +41,14 @@ function loadValues(){
         .then(response => response.text())
         .then(text => raw_values = text.toLowerCase().split(','))
         .then(x => {
-            if(phrase){
-                for (let i = 1; i < raw_values.length; i+=2) {
-                    loaded_values.push({
-                            answer: raw_values[i].trim(), // word/phrase to guess
-                            hint: raw_values[i+1].trim(), // <
-                            letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
-                            guessedAnswers: [] // <
-                    });  
-                }
-            }
-            else{
-                for (let i = 1; i < raw_values.length; i++) {
-                    loaded_values.push({
-                            answer: raw_values[i].trim(), // word/phrase to guess
-                            letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
-                            guessedAnswers: [] // <
-                    });  
-                }
+            console.log(raw_values);
+            for (let i = 1; i < raw_values.length; i+=2) {
+                loaded_values.push({
+                        answer: raw_values[i].trim(), // word/phrase to guess
+                        hint: raw_values[i+1].trim(), // <
+                        letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
+                        guessedAnswers: [] // <
+                });  
             }
         });
 }
@@ -73,8 +70,8 @@ function attemptGuess(character){
         // Remove clickable onscreen letter and change styling to reflect that
         var ele = document.getElementById(character.toUpperCase());
         ele.classList.remove("clickable");
-        ele.classList.remove("letter-blue");
-        ele.classList.add("letter-green");
+        ele.classList.remove("blue-border");
+        ele.classList.add("green-border");
         ele.removeAttribute("onclick");
 
         // Get every location of that letter
@@ -89,8 +86,8 @@ function attemptGuess(character){
         for (let index = 0; index < locations.length; index++) {
             document.getElementById(`letter-${locations[index]}-text`).innerText = character.toUpperCase();
             var changeSquare = document.getElementById(`letter-${locations[index]}`);  
-            changeSquare.classList.remove("letter-red");
-            changeSquare.classList.add("letter-green");               
+            changeSquare.classList.remove("red-border");
+            changeSquare.classList.add("green-border");               
         }
 
         if(checkCompletion()){
@@ -100,14 +97,14 @@ function attemptGuess(character){
     else{
         // Get the clicked letter and disable it
         var changeSquare = document.getElementById(character.toUpperCase());
-        changeSquare.classList.remove("letter-blue");
+        changeSquare.classList.remove("blue-border");
         changeSquare.classList.remove("clickable");
-        changeSquare.classList.add("letter-red");
+        changeSquare.classList.add("red-border");
         changeSquare.removeAttribute("onclick");
-        changeSquare.getElementsByTagName("p")[0].style.textDecoration = "line-through";
+        changeSquare.getElementsByTagName("p")[0].classList.add("strike");
 
         guessesLeft--;
-        document.getElementById("guesses-text").innerText = guessesLeft;
+        document.getElementById("chances").innerText = guessesLeft;
         if(guessesLeft == 0){
             endGame();
         }
@@ -119,50 +116,38 @@ function startGame(fileName){
         .then(_res => {
             selectWord();
 
-            var lettersParentHTML = document.getElementById("answer-box");
+            var lettersParentHTML = document.getElementById("word-container");
             var newHtml = "";
             console.log(loaded_values[currentWord].answer);
             for (let index = 0; index < loaded_values[currentWord].answer.length; index++) {
                 if(loaded_values[currentWord].answer[index] === " "){
-                    newHtml += `<br class="vis-flip"><div id="letter-${index}" class="letter-box vis-flip-2"><p id="letter-${index}-text" class="box-letter"> </p></div>`;
+                    // newHtml += `<div class="word-inner-square"></div>`;
+                    newHtml += "<br>";
                 }
                 else{
-                    newHtml += `<div id="letter-${index}" class="letter-box letter-red"><p id="letter-${index}-text" class="box-letter">?</p></div>`;                    
+                    newHtml += `
+                    <div id="letter-${index}" class="word-inner-square red-border">
+                        <p id="letter-${index}-text" class="word-text">?</p>
+                    </div>`;
                 }
             }
-            lettersParentHTML.outerHTML = '<div id="answer-box" class="word-box">' + newHtml + '</div>';
 
-            if(phrase){
-                document.getElementsByClassName("parent")[0];
-
-                var hintElement = document.createElement("div");
-                hintElement.classList.add("parent");
-                document.getElementsByClassName("parent")[0].parentNode.insertBefore(hintElement, document.getElementsByClassName("parent")[0].nextSibling);
-                
-                var textElementParent = document.createElement("div")
-                textElementParent.classList.add("hint-box");
-                hintElement.appendChild(textElementParent);
-
-                var textElement = document.createElement("p");
-                textElement.classList.add("hint-text");
-                textElement.innerText = "Hint : " +loaded_values[currentWord].hint;
-                textElementParent.appendChild(textElement);
-
-            }
-
+            lettersParentHTML.innerHTML = newHtml;
+            
             if(timed === true){
-                startTimer(60);                
+                startTimer(120);                
             }
             else{
                 var timerParent = document.getElementById("timer-parent");
-                timerParent.style.visibility = "hidden";
-                timerParent.style.display = "none";
+                timerParent.classList.add("hidden");
             }
+
+            document.getElementById("hint-text").innerText = loaded_values[currentWord].hint;
             active = true;
         });
     
     guessesLeft = 11;
-    document.getElementById("guesses-text").innerText = guessesLeft;
+    document.getElementById("chances").innerText = guessesLeft;
 }
 
 function endGame(){
@@ -190,6 +175,9 @@ function endGame(){
         }
     }
 
+    document.getElementById("timer-parent").classList.add("hidden");
+    document.getElementById("chances-parent").classList.add("hidden");
+    document.getElementById("next-parent").classList.remove("hidden");
 }
 
 function resetGame(){
@@ -213,8 +201,5 @@ function updateOnScreenTimer(){
 }
 
 function checkCompletion(){
-    if(loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",")){
-        return true;
-    }
-    return false;
+    return loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",");
 }

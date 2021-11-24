@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>WIP</title>    
+        <title>HANGMAN</title>    
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,24 +12,15 @@
     </head>
 
     <body>
-        <!-- <div style="position: absolute;height:99%;border:1px solid green;right:50%;"></div> -->
         <header>
             <div class="title">
-                <h1><span>HANG</span>MAN</h1>
+                <h1><span class="strike">HANG</span>MAN</h1>
             </div>
 
             <nav>
                 <ul>
                     <li>
-                        <a href="index.html">Home</a>
-                    </li>
-
-                    <li>
-                        <a href="play.html">Normal</a>
-                    </li>
-
-                    <li>
-                        <a href="index.html">Multi</a>
+                        <a class="circle clickable" href="index.html">Home</a>
                     </li>
                 </ul>
             </nav>
@@ -38,106 +29,36 @@
         <main>
             <div class="parent">
                 <!-- timer -->
-                <div class="timer-square violet-border">
+                <div id="timer-parent" class="timer-square violet-border">
                     <div class="timer-inner-square red-border">
                         <p id="timer-text" class="timer-text">999</p>
                     </div>
                 </div>
 
                 <!-- chances -->
-                <div class="chances-square violet-border">
+                <div id="chances-parent" class="chances-square violet-border">
                     <div class="chances-inner-square red-border">
                         <p id="chances" class="chances-text">?</p>
+                    </div>
+                </div>
+
+                <!-- next word -->
+                <div id="next-parent" class="next-square hidden violet-border">
+                    <div class="next-inner-square red-border">
+                        <p id="next" class="next-text clickable">Play Again</p>
                     </div>
                 </div>
             </div>
 
             <!-- word -->
-            <!-- It’s the best thing since sliced bread -->
-            <div class="word-square violet-border">
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <br>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <br>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <br>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <br>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <br>
-
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
-                </div>
-
-                <br>
-
+            <div id="word-container" class="word-square violet-border">
                 <div class="word-inner-square red-border">
                     <p class="word-text">?</p>
                 </div>
             </div>
 
             <div class="hint-box violet-border">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed hendrerit enim, vel dictum enim.</p>
+                <p id="hint-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sed hendrerit enim, vel dictum enim.</p>
             </div>
 
             <div class="keyboard-parent">
@@ -173,6 +94,6 @@
             </div>
         </main>
 
-        <!-- <script src="assets/js/script.js"></script> -->
+        <script src="assets/js/script.js"></script>
     </body>
 </html>

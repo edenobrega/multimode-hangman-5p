@@ -64,12 +64,47 @@ p{
     line-height:50px;
 }
 
+
+/* next game */
+.next-square{
+    margin-left:10px;
+    height:75px;
+    width:150px;
+    display:inline-block;
+}
+
+.next-inner-square{
+    height:50px;
+    width:125px;
+    position: relative;
+    top:50%;
+    margin: 0 auto;
+    margin-top:-25px;
+}
+
+.next-text{
+    position: absolute;
+    width:125px;
+    height:50px;
+    line-height:50px;
+}
+
+#next{
+    text-align: center;
+    text-decoration: none;
+    color:whitesmoke;
+    font-family: "fira sans";
+}
+
+
 /* word */
 .word-square{
     height: max-content;
-    width: 100%; 
+    width: max-content; 
     margin: 0 auto;
     margin-top:5px;
+    text-align: center;
+    padding:5px;
 }
 
 
@@ -95,7 +130,7 @@ p{
 	margin-top: 10px;
 }
 
-.hint-box p{
+#hint-text{
     font-size: 0.9rem;
 }
 
@@ -125,14 +160,11 @@ p{
     line-height: 35px;
 }
 
-.clickable:hover{
-    background-color: #3A546F;
-}
-
 /* other */
 
-.strike{
-    text-decoration: line-through;
+.hidden{
+    visibility: hidden;
+    display: none;
 }
 
 .violet-border{
@@ -152,24 +184,59 @@ p{
 }
 
 
-
-
-
-
-
-
-
 /* Tablet */
-@media only screen and (max-width: 600px) {
-
+@media only screen and (min-width: 600px) {
+    h1{
+        color:red;
+    }
 }
 
 /* Desktop */
 @media only screen and (min-width: 992px) {
+    h1{
+        color:green;
+    }
 
+    .keys-box{
+        width:40%;
+        padding:10px;
+    }
+
+    #hint-text{
+        font-size: 1.2rem;
+    }
+
+    .hint-box{
+        padding:15px;        
+    }
+
+    .word-square{
+        padding:10px;
+    }
+
+    .word-inner-square{
+        width:40px;
+        height:40px;
+    }
+
+    .word-text{
+        width:40px;
+        height:40px;
+        line-height: 40px;
+    }
 }
 
 /* Large Desktop */
 @media only screen and (min-width: 1200px) {
+    h1{
+        color:yellow;
+    }
 
+    .parent{
+        margin-top: 35px;
+    }
+
+    .word-square, .hint-box,.keyboard-parent{
+        margin-top: 25px;
+    }
 }
