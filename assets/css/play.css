@@ -186,17 +186,11 @@ p{
 
 /* Tablet */
 @media only screen and (min-width: 600px) {
-    h1{
-        color:red;
-    }
+
 }
 
 /* Desktop */
 @media only screen and (min-width: 992px) {
-    h1{
-        color:green;
-    }
-
     .keys-box{
         width:40%;
         padding:10px;
@@ -228,10 +222,6 @@ p{
 
 /* Large Desktop */
 @media only screen and (min-width: 1200px) {
-    h1{
-        color:yellow;
-    }
-
     .parent{
         margin-top: 35px;
     }
