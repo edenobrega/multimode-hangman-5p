@@ -34,7 +34,7 @@
                 </p>
                 <br>
                 <p>Word Set</p>
-                <select id="word">
+                <select id="word-select">
                     <option value="words">Words</option>
                     <option value="countries">Countries</option>
                 </select>                
@@ -42,7 +42,7 @@
                 <input type="checkbox" name="word-timed" id="word-timed">
                 <label for="word-timed">Timed</label>
                 <br>
-                <a class="circle mode-button clickable" href="play.html?phrase=false&timed=false">Play</a>    
+                <a id="first-play" class="circle mode-button clickable" href="play.html?phrase=false&timed=false&file=words">Play</a>    
             </div>
 
             <div class="parent-2">
@@ -52,15 +52,15 @@
                 </p>  
                 <br>
                 <p>Word Set</p>
-                <select id="phrase">
+                <select id="phrase-select">
                     <option value="phrases">Popular British Idioms</option>
-                    <option value="filmquotes">Famous Film Quotes</option>
+                    <option value="filmquote">Famous Film Quotes</option>
                 </select>                
                 <br>
                 <input type="checkbox" name="phrase-timed" id="phrase-timed">
                 <label for="phrase-timed">Timed</label>
                 <br>
-                <a class="circle mode-button clickable" href="play.html?phrase=true&timed=false&file=phrases">Play</a>                     
+                <a id="second-play" class="circle mode-button clickable" href="play.html?phrase=true&timed=false&file=phrases">Play</a>                     
             </div>
         </main>
 
