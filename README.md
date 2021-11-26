@@ -67,7 +67,8 @@ I dedcided to use a simple, thin, undecrotive font. I chose Fira Sans and used t
 *Play Again*
 
 ### Features Left to Implement
-None. (?)
+Read from the Non-sentence and sentence folders and fill the selects on index with them.
+Have a random mode which uses an api like https://dictionaryapi.dev/ to get random words
 
 ## Technologies Used
 - I used [git](https://git-scm.com/) for version control and storage.
@@ -93,17 +94,44 @@ None. (?)
 #### style.css
 
 ### Responsiveness
+![index.html shown on my phone, huawei mate 20 pro](documentation/responsive/index-mobile.png)
+
+*index.html shown on my phone, huawei mate 20 pro*
+
+![play.html shown on my phone, huawei mate 20 pro](documentation/responsive/play-mobile.png)
+
+*play.html shown on my phone, huawei mate 20 pro*
+
+![index.html shown at 880px](documentation/responsive/play-880px.png)
+
+*index.html shown at 880px*
+
+![index.html shown at 1280px](documentation/responsive/play-1280px.png)
+
+*index.html shown at 1280px*
 
 ### Unfixed Bugs
 
 ## Deployment
+The site was deployed to GitHub pages. The steps to deploy are as follows:
+
+    In the GitHub repository, navigate to the Settings tab.
+    From the Settings tab, scroll down until you see the 'Pages' button on the left.
+    From the Source section drop-down menu, select the Main branch.
+    Once the Main branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+
+The live link can be found here - https://edenobrega.github.io/multimode-hangman-5p/
 
 ## Local Deployment
+To make a local copy of this project, you can clone it by typing the following in your IDE terminal:
 
+- `git clone https://github.com/edenobrega/multimode-hangman-5p.git`
+
+Alternatively, if using Gitpod, you can click the green Gitpod button, or use [this link](https://gitpod.io/#https://github.com/edenobrega/multimode-hangman-5p)
 
 ## Credits
 
 ### Content
 https://www.ef.com/wwen/blog/language/20-english-idioms-that-everyone-should-know/
-
+https://datahub.io/core/country-list#data-cli
 ### Media

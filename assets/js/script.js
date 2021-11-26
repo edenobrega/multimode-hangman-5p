@@ -252,7 +252,5 @@ function updateOnScreenTimer(){
 // Check if all correct letters have been guessed
 function checkCompletion(){
     // Sort the lists and then turn into them into strings so that they can be compared
-    console.log(loaded_values[currentWord].letterAnswers.sort().join(","));
-    console.log(loaded_values[currentWord].guessedAnswers.sort().join(","));
     return loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",");
 }
