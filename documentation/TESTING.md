@@ -15,16 +15,16 @@ JSHint validation for script.js, showing no errors, but two errors, the first is
 ![jshint validation on index.script](testing/jshint-script.png)
 
 CSS Validation for style.css showing no errors
-![CSS validation for style.css](testing/css-validator-style)
+![CSS validation for style.css](testing/css-validator-style.png)
 
 CSS Validation for index.css showing no errors
-![CSS validation for index.css](testing/css-validator-index)
+![CSS validation for index.css](testing/css-validator-index.png)
 
 CSS Validation for play.css showing no errors
-![CSS validation for play.css](testing/css-validator-play)
+![CSS validation for play.css](testing/css-validator-play.png)
 
 HTML Validation for index.html showing no errors
-![HTML validation for index.html](testing/html-validator-index)
+![HTML validation for index.html](testing/html-validator-index.png)
 
 HTML Validation for play.html showing no errors
-![HTML validation for play.html](testing/html-validator-play)
+![HTML validation for play.html](testing/html-validator-play.png)
