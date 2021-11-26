@@ -1,8 +1,9 @@
+/* jshint esversion: 8 */
 let phraseTimed = false;
 document.getElementById("phrase-timed").addEventListener("change", function(){
     phraseTimed = !phraseTimed;
     document.getElementById("second-play").href = 
-        document.getElementById("second-play").href.replace(`timed=${!phraseTimed}`,`timed=${phraseTimed}`)
+        document.getElementById("second-play").href.replace(`timed=${!phraseTimed}`,`timed=${phraseTimed}`);
 });
 
 let timed = false;
