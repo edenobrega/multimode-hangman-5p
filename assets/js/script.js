@@ -241,6 +241,8 @@ function resetGame(){
         keys[i].getElementsByTagName("p")[0].classList.remove("strike")
 
         keys[i].classList.add("blue-border")
+        keys[i].classList.add("clickable");
+
     }
 
     if(timed){
@@ -248,6 +250,8 @@ function resetGame(){
     }
     document.getElementById("chances-parent").classList.remove("hidden");
     document.getElementById("next-parent").classList.add("hidden");
+
+    loaded_values[currentWord].guessedAnswers = [];
     startGame();
 }
 
