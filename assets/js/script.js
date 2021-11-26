@@ -14,6 +14,8 @@ let file = "";
 // Characters that should not appear in answers
 let nonGuessable = [',','!',"'","."];
 
+let usedLetters = [];
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
@@ -46,7 +48,7 @@ document.onkeydown = function(evt) {
 
     // Checks if the key that was pressed is in the alphabet
     if(evt.key.match(/[a-z]/i)){
-        attemptGuess(evt.key);
+        attemptGuess(evt.key.toLowerCase());
     }
     // If the game is not active and the spacebar was pressed, restart game
     else if(active === false && evt.key == " "){
@@ -97,7 +99,7 @@ function selectWord(){
 
 // Check to see if guessed character is correct
 function attemptGuess(character){
-    if(!active){
+    if(!active || usedLetters.includes(character) || loaded_values[currentWord].guessedAnswers.includes(character)){
         return;
     }
     let ele = document.getElementById(character.toUpperCase());
@@ -133,6 +135,8 @@ function attemptGuess(character){
         ele.classList.add("red-border");
         ele.getElementsByTagName("p")[0].classList.add("strike");
 
+        usedLetters.push(character);
+
         guessesLeft--;
         document.getElementById("chances").innerText = guessesLeft;
         if(guessesLeft == 0){
@@ -142,7 +146,6 @@ function attemptGuess(character){
 
     ele.classList.remove("clickable");
     ele.classList.remove("blue-border");
-    ele.removeAttribute("onclick");
 }
 
 // Runs all functions needed in correct order, and creates/modifies html 
@@ -249,5 +252,7 @@ function updateOnScreenTimer(){
 // Check if all correct letters have been guessed
 function checkCompletion(){
     // Sort the lists and then turn into them into strings so that they can be compared
+    console.log(loaded_values[currentWord].letterAnswers.sort().join(","));
+    console.log(loaded_values[currentWord].guessedAnswers.sort().join(","));
     return loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",");
 }
