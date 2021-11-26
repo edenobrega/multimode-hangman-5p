@@ -34,16 +34,13 @@
                 </p>
                 <br>
                 <p>Word Set</p>
-                <select>
+                <select id="word">
+                    <option value="words">Words</option>
                     <option value="countries">Countries</option>
-                    <option value="carbrands">Car Brands</option>
-                    <option value="city">Cities</option>
                 </select>                
                 <br>
-                <input checked="checked" type="radio" id="untimed-radio" name="timed" value="true">
-                <label for="untimed-radio">Untimed</label><br>
-                <input type="radio" id="timed-radio" name="timed" value="false">
-                <label for="timed-radio">Timed</label><br>
+                <input type="checkbox" name="word-timed" id="word-timed">
+                <label for="word-timed">Timed</label>
                 <br>
                 <a class="circle mode-button clickable" href="play.html?phrase=false&timed=false">Play</a>    
             </div>
@@ -55,17 +52,18 @@
                 </p>  
                 <br>
                 <p>Word Set</p>
-                <select>
-                    <option value="">wip</option>
+                <select id="phrase">
+                    <option value="phrases">Popular British Idioms</option>
+                    <option value="filmquotes">Famous Film Quotes</option>
                 </select>                
                 <br>
-                <input checked="checked" type="radio" id="untimed-radio" name="timed" value="true">
-                <label for="untimed-radio">Untimed</label><br>
-                <input type="radio" id="timed-radio" name="timed" value="false">
-                <label for="timed-radio">Timed</label><br>
+                <input type="checkbox" name="phrase-timed" id="phrase-timed">
+                <label for="phrase-timed">Timed</label>
                 <br>
-                <a class="circle mode-button clickable" href="play.html?phrase=true&timed=false">Play</a>                     
+                <a class="circle mode-button clickable" href="play.html?phrase=true&timed=false&file=phrases">Play</a>                     
             </div>
         </main>
+
+        <script src="assets/js/index.js"></script>
     </body>
 </html>

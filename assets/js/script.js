@@ -6,77 +6,111 @@ let timerOnscreen;
 let maxTime;
 let guessesLeft = 11;
 
-var timed = true;
+let timed = true;
 let active = false;
-var phrase = true;
+let phrase = true;
+let file = "";
+
+// Characters that should not appear in answers
+let nonGuessable = [',','!',"'","."];
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+// Get URL params
 if(urlParams.get("phrase") !== null){
     phrase = urlParams.get("phrase") == "true";
 }
 if(urlParams.get("timed") !== null){
     timed = urlParams.get("timed") == "true";
 }
+if(urlParams.get("file")){
+    file = urlParams.get("file");
+}
 
+// Add event listener to Play Again
 document.getElementById("next").addEventListener("click", reload);
+
+// Get all keys on the onscreen keyboard
+let keys = document.getElementsByClassName("key-box");
+// Loop through and add a onclick event to each div
+for(let i = 0; i < keys.length; i++){
+    keys[i].addEventListener("click", function(){
+        attemptGuess(keys[i].id.toLowerCase());
+    });
+}
+
+// eventlistener for keyboard use
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+
+    // Checks if the key that was pressed is in the alphabet
+    if(evt.key.match(/[a-z]/i)){
+        attemptGuess(evt.key);
+    }
+    // If the game is not active and the spacebar was pressed, restart game
+    else if(active === false && evt.key == " "){
+        reload();
+    }
+};
 
 startGame();
 
+// Will be removed once restart game code works
 function reload(){
     window.location.reload();
 }
 
+// Load the csv file into an array
 function loadValues(){
-    var raw_values;
-    var fileName;
+    let raw_values;
+    let fileName;
+    
     if(phrase){
-        fileName = "assets/answers/phrases.csv";
+        fileName = "assets/answers/sentence/"+file+".csv";
     }
     else{
-        fileName = "assets/answers/words.csv";
+        fileName = "assets/answers/non-sentence/"+file+".csv";
     }
+
     return fetch(fileName)
         .then(response => response.text())
-        .then(text => raw_values = text.toLowerCase().split(','))
-        .then(x => {
-            console.log(raw_values);
-            for (let i = 1; i < raw_values.length; i+=2) {
+        .then(text => {
+            raw_values = text.toLowerCase().split('\n');
+            for(let i = 1; i < raw_values.length; i++){
+                let u = raw_values[i].split(','); 
                 loaded_values.push({
-                        answer: raw_values[i].trim(), // word/phrase to guess
-                        hint: raw_values[i+1].trim(), // <
-                        letterAnswers: Array.from(new Set(raw_values[i].replace(/\s+/g, '').split(''))), // all the unique letters to be guessed
-                        guessedAnswers: [] // <
-                });  
+                    answer: u[0].trim(),
+                    hint: u[1].trim(),
+                    letterAnswers: Array.from(new Set(u[0].replace(/\s+/g, '').split(''))) // all the unique letters to be guessed
+                        .filter(val => !nonGuessable.includes(val)), // remove nonguessables
+                    guessedAnswers: [] // <
+                });
             }
         });
 }
 
+// Randomly selects a word from the loaded array
 function selectWord(){
-    console.log(loaded_values.length);
     currentWord = Math.floor(Math.random() * loaded_values.length);
 }
 
+// Check to see if guessed character is correct
 function attemptGuess(character){
     if(!active){
         return;
     }
-
+    let ele = document.getElementById(character.toUpperCase());
     if(loaded_values[currentWord].letterAnswers.includes(character)){
         // Add letter to guessed answers list 
         loaded_values[currentWord].guessedAnswers.push(character);
 
         // Remove clickable onscreen letter and change styling to reflect that
-        var ele = document.getElementById(character.toUpperCase());
-        ele.classList.remove("clickable");
-        ele.classList.remove("blue-border");
         ele.classList.add("green-border");
-        ele.removeAttribute("onclick");
 
         // Get every location of that letter
-        var locations = [];
-        var idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase());
+        let locations = [];
+        let idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase());
         while(idx != -1){
             locations.push(idx);
             idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase(), idx+1);
@@ -85,7 +119,7 @@ function attemptGuess(character){
         // Use locations to set styling and contents
         for (let index = 0; index < locations.length; index++) {
             document.getElementById(`letter-${locations[index]}-text`).innerText = character.toUpperCase();
-            var changeSquare = document.getElementById(`letter-${locations[index]}`);  
+            let changeSquare = document.getElementById(`letter-${locations[index]}`);  
             changeSquare.classList.remove("red-border");
             changeSquare.classList.add("green-border");               
         }
@@ -96,12 +130,8 @@ function attemptGuess(character){
     }
     else{
         // Get the clicked letter and disable it
-        var changeSquare = document.getElementById(character.toUpperCase());
-        changeSquare.classList.remove("blue-border");
-        changeSquare.classList.remove("clickable");
-        changeSquare.classList.add("red-border");
-        changeSquare.removeAttribute("onclick");
-        changeSquare.getElementsByTagName("p")[0].classList.add("strike");
+        ele.classList.add("red-border");
+        ele.getElementsByTagName("p")[0].classList.add("strike");
 
         guessesLeft--;
         document.getElementById("chances").innerText = guessesLeft;
@@ -109,26 +139,36 @@ function attemptGuess(character){
             endGame();
         }
     }
+
+    ele.classList.remove("clickable");
+    ele.classList.remove("blue-border");
+    ele.removeAttribute("onclick");
 }
 
+// Runs all functions needed in correct order, and creates/modifies html 
 function startGame(fileName){
     loadValues(fileName)
         .then(_res => {
             selectWord();
 
-            var lettersParentHTML = document.getElementById("word-container");
-            var newHtml = "";
-            console.log(loaded_values[currentWord].answer);
+            let lettersParentHTML = document.getElementById("word-container");
+            let newHtml = "";
+
             for (let index = 0; index < loaded_values[currentWord].answer.length; index++) {
                 if(loaded_values[currentWord].answer[index] === " "){
-                    // newHtml += `<div class="word-inner-square"></div>`;
                     newHtml += "<br>";
+                }
+                else if(nonGuessable.includes(loaded_values[currentWord].answer[index])){
+                    newHtml += `
+                    <div id="letter-${index}" class="word-inner-square green-border">
+                        <p id="letter-${index}-text" class="word-text">${loaded_values[currentWord].answer[index]}</p>
+                    </div>`;  
                 }
                 else{
                     newHtml += `
                     <div id="letter-${index}" class="word-inner-square red-border">
                         <p id="letter-${index}-text" class="word-text">?</p>
-                    </div>`;
+                    </div>`;     
                 }
             }
 
@@ -138,11 +178,13 @@ function startGame(fileName){
                 startTimer(120);                
             }
             else{
-                var timerParent = document.getElementById("timer-parent");
+                let timerParent = document.getElementById("timer-parent");
                 timerParent.classList.add("hidden");
             }
 
-            document.getElementById("hint-text").innerText = loaded_values[currentWord].hint;
+            // Doing this inline next to innerText does not replace the @
+            let text = loaded_values[currentWord].hint.replace('@',',');
+            document.getElementById("hint-text").innerText = text;
             active = true;
         });
     
@@ -150,20 +192,22 @@ function startGame(fileName){
     document.getElementById("chances").innerText = guessesLeft;
 }
 
+// Reveal remaining letters and enable play again button
 function endGame(){
     active = false;
     if(timed){
         window.clearTimeout(timer);
         window.clearInterval(timerOnscreen);        
     }
+    // Check if player failed to complete
     if(!(checkCompletion())){
         // get missing letters
         let missing = loaded_values[currentWord].letterAnswers.filter(val => !loaded_values[currentWord].guessedAnswers.includes(val));
 
         for (let index = 0; index < missing.length; index++) {
             // get each location of those missing letters
-            var locations = [];
-            var idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase());
+            let locations = [];
+            let idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase());
             while(idx != -1){
                 locations.push(idx);
                 idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase(), idx+1);
@@ -180,11 +224,12 @@ function endGame(){
     document.getElementById("next-parent").classList.remove("hidden");
 }
 
+// Reset the game and html
 function resetGame(){
 
 }
 
-// In seconds
+// Begins the timer | In seconds
 function startTimer(gameLength){
     maxTime = gameLength;
     timer = setTimeout(endGame ,(gameLength * 1000)+1000);
@@ -192,6 +237,7 @@ function startTimer(gameLength){
     timerOnscreen = setInterval(updateOnScreenTimer ,1000);
 }
 
+// Updates the html element that holds the timer
 function updateOnScreenTimer(){
     maxTime--;
     document.getElementById("timer-text").innerText = maxTime;
@@ -200,6 +246,8 @@ function updateOnScreenTimer(){
     }
 }
 
+// Check if all correct letters have been guessed
 function checkCompletion(){
+    // Sort the lists and then turn into them into strings so that they can be compared
     return loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",");
 }

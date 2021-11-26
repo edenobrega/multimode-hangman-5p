@@ -194,6 +194,7 @@ p{
     .keys-box{
         width:40%;
         padding:10px;
+        margin-bottom:25px;
     }
 
     #hint-text{

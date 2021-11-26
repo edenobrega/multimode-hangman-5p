@@ -33,3 +33,13 @@ label{
     color:whitesmoke;
     font-family: "Hind Guntur";
 }
+
+select {
+	background-color: unset;
+	border: 1px solid #BFDAB9;
+	color: white;
+}
+
+option{
+    background-color: #1a1a24;
+}
