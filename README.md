@@ -68,6 +68,7 @@ I dedcided to use a simple, thin, undecrotive font. I chose Fira Sans and used t
 
 ### Features Left to Implement
 Read from the Non-sentence and sentence folders and fill the selects on index with them.
+
 Have a random mode which uses an api like https://dictionaryapi.dev/ to get random words
 
 ## Technologies Used

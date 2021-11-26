@@ -31,7 +31,7 @@ if(urlParams.get("file")){
 }
 
 // Add event listener to Play Again
-document.getElementById("next").addEventListener("click", reload);
+document.getElementById("next").addEventListener("click", resetGame);
 
 // Get all keys on the onscreen keyboard
 let keys = document.getElementsByClassName("key-box");
@@ -52,16 +52,11 @@ document.onkeydown = function(evt) {
     }
     // If the game is not active and the spacebar was pressed, restart game
     else if(active === false && evt.key == " "){
-        reload();
+        resetGame();
     }
 };
 
 startGame();
-
-// Will be removed once restart game code works
-function reload(){
-    window.location.reload();
-}
 
 // Load the csv file into an array
 function loadValues(){
@@ -147,49 +142,56 @@ function attemptGuess(character){
     ele.classList.remove("clickable");
     ele.classList.remove("blue-border");
 }
+// creates/modifies needed HTML 
+function buildHTML(){
+    let lettersParentHTML = document.getElementById("word-container");
+    let newHtml = "";
 
-// Runs all functions needed in correct order, and creates/modifies html 
+    for (let index = 0; index < loaded_values[currentWord].answer.length; index++) {
+        if(loaded_values[currentWord].answer[index] === " "){
+            newHtml += "<br>";
+        }
+        else if(nonGuessable.includes(loaded_values[currentWord].answer[index])){
+            newHtml += `
+            <div id="letter-${index}" class="word-inner-square green-border">
+                <p id="letter-${index}-text" class="word-text">${loaded_values[currentWord].answer[index]}</p>
+            </div>`;  
+        }
+        else{
+            newHtml += `
+            <div id="letter-${index}" class="word-inner-square red-border">
+                <p id="letter-${index}-text" class="word-text">?</p>
+            </div>`;     
+        }
+    }
+
+    lettersParentHTML.innerHTML = newHtml;
+
+    document.getElementById("hint-text").innerText = loaded_values[currentWord].hint;
+    active = true;
+}
+
+// Runs all functions needed in correct order, and 
 function startGame(fileName){
-    loadValues(fileName)
-        .then(_res => {
-            selectWord();
+    if(loaded_values.length == 0){
+        loadValues(fileName)
+            .then(_res => {
+                selectWord();
+                buildHTML();
+            });        
+    }
+    else{
+        selectWord();
+        buildHTML();
+    }
 
-            let lettersParentHTML = document.getElementById("word-container");
-            let newHtml = "";
-
-            for (let index = 0; index < loaded_values[currentWord].answer.length; index++) {
-                if(loaded_values[currentWord].answer[index] === " "){
-                    newHtml += "<br>";
-                }
-                else if(nonGuessable.includes(loaded_values[currentWord].answer[index])){
-                    newHtml += `
-                    <div id="letter-${index}" class="word-inner-square green-border">
-                        <p id="letter-${index}-text" class="word-text">${loaded_values[currentWord].answer[index]}</p>
-                    </div>`;  
-                }
-                else{
-                    newHtml += `
-                    <div id="letter-${index}" class="word-inner-square red-border">
-                        <p id="letter-${index}-text" class="word-text">?</p>
-                    </div>`;     
-                }
-            }
-
-            lettersParentHTML.innerHTML = newHtml;
-            
-            if(timed === true){
-                startTimer(120);                
-            }
-            else{
-                let timerParent = document.getElementById("timer-parent");
-                timerParent.classList.add("hidden");
-            }
-
-            // Doing this inline next to innerText does not replace the @
-            let text = loaded_values[currentWord].hint.replace('@',',');
-            document.getElementById("hint-text").innerText = text;
-            active = true;
-        });
+    if(timed === true){
+        startTimer(120);                
+    }
+    else{
+        let timerParent = document.getElementById("timer-parent");
+        timerParent.classList.add("hidden");
+    }
     
     guessesLeft = 11;
     document.getElementById("chances").innerText = guessesLeft;
@@ -222,14 +224,31 @@ function endGame(){
         }
     }
 
-    document.getElementById("timer-parent").classList.add("hidden");
+    if(timed){
+        document.getElementById("timer-parent").classList.add("hidden");        
+    }
     document.getElementById("chances-parent").classList.add("hidden");
     document.getElementById("next-parent").classList.remove("hidden");
 }
 
 // Reset the game and html
 function resetGame(){
+    let keys = document.getElementsByClassName("key-box");
+    for(let i = 0; i < keys.length;i++){
+        keys[i].classList.remove("blue-border")
+        keys[i].classList.remove("red-border")
+        keys[i].classList.remove("green-border")
+        keys[i].getElementsByTagName("p")[0].classList.remove("strike")
 
+        keys[i].classList.add("blue-border")
+    }
+
+    if(timed){
+        document.getElementById("timer-parent").classList.remove("hidden");        
+    }
+    document.getElementById("chances-parent").classList.remove("hidden");
+    document.getElementById("next-parent").classList.add("hidden");
+    startGame();
 }
 
 // Begins the timer | In seconds
