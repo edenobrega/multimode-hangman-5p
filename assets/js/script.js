@@ -14,8 +14,6 @@ let file = "";
 // Characters that should not appear in answers
 let nonGuessable = [',','!',"'","."];
 
-let usedLetters = [];
-
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
@@ -45,7 +43,6 @@ for(let i = 0; i < keys.length; i++){
 // eventlistener for keyboard use
 document.onkeydown = function(evt) {
     evt = evt || window.event;
-
     // Checks if the key that was pressed is in the alphabet
     if(evt.key.match(/[a-z]/i)){
         attemptGuess(evt.key.toLowerCase());
@@ -94,11 +91,12 @@ function selectWord(){
 
 // Check to see if guessed character is correct
 function attemptGuess(character){
-    if(!active || usedLetters.includes(character) || loaded_values[currentWord].guessedAnswers.includes(character)){
+    if(!active || loaded_values[currentWord].guessedAnswers.includes(character) || !character.match(/[a-z]/i)){
         return;
     }
     let ele = document.getElementById(character.toUpperCase());
     if(loaded_values[currentWord].letterAnswers.includes(character)){
+        ele = document.getElementById(character.toUpperCase());
         // Add letter to guessed answers list 
         loaded_values[currentWord].guessedAnswers.push(character);
 
@@ -126,11 +124,10 @@ function attemptGuess(character){
         }
     }
     else{
+        ele = document.getElementById(character.toUpperCase());
         // Get the clicked letter and disable it
         ele.classList.add("red-border");
         ele.getElementsByTagName("p")[0].classList.add("strike");
-
-        usedLetters.push(character);
 
         guessesLeft--;
         document.getElementById("chances").innerText = guessesLeft;
@@ -250,7 +247,6 @@ function resetGame(){
     }
     document.getElementById("chances-parent").classList.remove("hidden");
     document.getElementById("next-parent").classList.add("hidden");
-
     loaded_values[currentWord].guessedAnswers = [];
     startGame();
 }
