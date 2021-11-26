@@ -83,15 +83,7 @@ Have a random mode which uses an api like https://dictionaryapi.dev/ to get rand
 
 ## Testing
 
-### Browser Compatibility
-![Home page (left) shown in chrome, and play page (right) shown in firefox](documentation/browser-compatibility-1.png)
-*Home page (left) shown in chrome, and play page (right) shown in firefox*
-
-![Play page shown in chrome (left) and edge (right)](documentation/browser-compatibility-2.png)
-*Play page shown in chrome (left) and edge (right)*
-### Code Validation
-
-#### style.css
+To see all testing see [TESTING.md](documentation/TESTING.md)
 
 ### Responsiveness
 ![index.html shown on my phone, huawei mate 20 pro](documentation/responsive/index-mobile.png)
