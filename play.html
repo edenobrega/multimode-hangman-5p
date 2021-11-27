@@ -20,10 +20,26 @@
             <nav>
                 <ul>
                     <li>
-                        <a class="circle clickable" href="index.html">Home</a>
+                        <a class="clickable" href="index.html">Home</a>
                     </li>
+
+                    <li>
+                        <a id="myBtn" class="clickable">How To Play</a>
+                    </li> 
                 </ul>
             </nav>
+
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <p>
+                      Using the dropdown labeled "Word Set" select the theme of questions you want, and toggle the checkbox if you want to play timed.
+                      <br>
+                      Once you hit play, either use the onscreen keyboard to make your guesses, or if on a laptop or desktop use your keyboard.
+                    </p>
+                </div>
+              </div>
         </header>
 
         <main>
@@ -96,5 +112,6 @@
         </main>
 
         <script src="assets/js/script.js"></script>
+        <script src="assets/js/modal.js"></script>
     </body>
 </html>
