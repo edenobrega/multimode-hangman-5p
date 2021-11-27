@@ -35,7 +35,10 @@ document.getElementById("next").addEventListener("click", resetGame);
 let keys = document.getElementsByClassName("key-box");
 // Loop through and add a onclick event to each div
 for(let i = 0; i < keys.length; i++){
-    keys[i].addEventListener("click", attemptGuess(keys[i].id.toLowerCase()));
+    // keys[i].addEventListener("click", attemptGuess(keys[i].id.toLowerCase()));
+    keys[i].addEventListener("click", function(){
+        attemptGuess(keys[i].id.toLowerCase());
+    });
 }
 
 // eventlistener for keyboard use
