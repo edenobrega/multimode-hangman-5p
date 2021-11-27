@@ -85,8 +85,14 @@ p{
 .next-text{
     position: absolute;
     width:125px;
-    height:50px;
-    line-height:50px;
+    height:25px;
+    line-height:25px;
+}
+
+.next-spacebar-text{
+        position: absolute;
+        top: 25px;        
+        width: 125px;
 }
 
 #next{
@@ -181,12 +187,6 @@ p{
 
 .green-border{
     border: 1px solid green;
-}
-
-
-/* Tablet */
-@media only screen and (min-width: 600px) {
-
 }
 
 /* Desktop */
