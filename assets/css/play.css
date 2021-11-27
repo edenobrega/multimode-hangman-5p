@@ -1,233 +1,235 @@
-main{
-    margin-right:2.5%;
-    margin-left:2.5%;
+main {
+    margin-right: 2.5%;
+    margin-left: 2.5%;
 }
 
-.parent{
-    width: fit-content; 
+.parent {
+    width: fit-content;
     margin: 0 auto;
-    margin-top:10px;
+    margin-top: 10px;
 }
 
-p{
-    color:whitesmoke;
+p {
+    color: whitesmoke;
     text-align: center;
     font-family: "fira sans";
 }
 
 /* timer */
-.timer-square{
-    display:inline-block;
-    height:75px;
-    width:75px;
-    margin-right:10px;
+.timer-square {
+    display: inline-block;
+    height: 75px;
+    width: 75px;
+    margin-right: 10px;
 }
 
-.timer-inner-square{
-    width:50px;
-    height:50px;
+.timer-inner-square {
+    width: 50px;
+    height: 50px;
     position: relative;
-    top:50%;
+    top: 50%;
     margin: 0 auto;
     margin-top: -25px;
 }
 
-.timer-text{
+.timer-text {
     position: absolute;
-    width:50px;
-    height:50px;
-    line-height:50px;
-    font-size:24px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
 }
 
 /* chances */
-.chances-square{
-    margin-left:10px;
-    height:75px;
-    width:75px;
-    display:inline-block
+.chances-square {
+    margin-left: 10px;
+    height: 75px;
+    width: 75px;
+    display: inline-block
 }
 
-.chances-inner-square{
-    width:50px;
-    height:50px;
+.chances-inner-square {
+    width: 50px;
+    height: 50px;
     position: relative;
-    top:50%;
+    top: 50%;
     margin: 0 auto;
-    margin-top:-25px;
+    margin-top: -25px;
 }
 
-.chances-text{
+.chances-text {
     position: absolute;
-    width:50px;
-    height:50px;
-    line-height:50px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
 }
 
 
 /* next game */
-.next-square{
-    margin-left:10px;
-    height:75px;
-    width:150px;
-    display:inline-block;
+.next-square {
+    margin-left: 10px;
+    height: 75px;
+    width: 150px;
+    display: inline-block;
 }
 
-.next-inner-square{
-    height:50px;
-    width:125px;
+.next-inner-square {
+    height: 50px;
+    width: 125px;
     position: relative;
-    top:50%;
+    top: 50%;
     margin: 0 auto;
-    margin-top:-25px;
+    margin-top: -25px;
 }
 
-.next-text{
+.next-text {
     position: absolute;
-    width:125px;
-    height:25px;
-    line-height:25px;
+    width: 125px;
+    height: 25px;
+    line-height: 25px;
 }
 
-.next-spacebar-text{
-        position: absolute;
-        top: 25px;        
-        width: 125px;
+.next-spacebar-text {
+    position: absolute;
+    top: 25px;
+    width: 125px;
 }
 
-#next{
+#next {
     text-align: center;
     text-decoration: none;
-    color:whitesmoke;
+    color: whitesmoke;
     font-family: "fira sans";
 }
 
 
 /* word */
-.word-square{
+.word-square {
     height: max-content;
-    width: max-content; 
+    width: max-content;
     margin: 0 auto;
-    margin-top:5px;
+    margin-top: 5px;
     text-align: center;
-    padding:5px;
+    padding: 5px;
 }
 
 
-.word-inner-square{
-    display:inline-block;    
-    width:20px;
-    height:20px;
-    margin:2px;
+.word-inner-square {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
 }
 
-.word-text{
+.word-text {
     position: absolute;
-    width:20px;
-    height:20px;
-    line-height:20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
 }
 
 .hint-box {
-	padding: 10px;
-	width: fit-content;
-	text-align: center;
-	margin: 0 auto;
-	margin-top: 10px;
+    padding: 10px;
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
 }
 
-#hint-text{
+#hint-text {
     font-size: 0.9rem;
 }
 
 /* keyboard */
-.keyboard-parent{
-    width:100%;
+.keyboard-parent {
+    width: 100%;
     margin-top: 10px;
 }
 
-.key-box{
-    width:35px;
-    height:35px;
-    display:inline-block;
-    margin:3px;
+.key-box {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    margin: 3px;
 }
 
-.keys-box{
-    padding:2px;
-    width:fit-content;
+.keys-box {
+    padding: 2px;
+    width: fit-content;
     margin: 0 auto;
     text-align: center;
 }
 
-.key-letter{
-    height:35px;
-    width:35px;
+.key-letter {
+    height: 35px;
+    width: 35px;
     line-height: 35px;
 }
 
 /* other */
 
-.hidden{
+.hidden {
     visibility: hidden;
     display: none;
 }
 
-.violet-border{
+.violet-border {
     border: 1px solid violet;
 }
 
-.red-border{
+.red-border {
     border: 1px solid red;
 }
 
-.blue-border{
+.blue-border {
     border: 1px solid blue;
 }
 
-.green-border{
+.green-border {
     border: 1px solid green;
 }
 
 /* Desktop */
 @media only screen and (min-width: 992px) {
-    .keys-box{
-        width:40%;
-        padding:10px;
-        margin-bottom:25px;
+    .keys-box {
+        width: 40%;
+        padding: 10px;
+        margin-bottom: 25px;
     }
 
-    #hint-text{
+    #hint-text {
         font-size: 1.2rem;
     }
 
-    .hint-box{
-        padding:15px;        
+    .hint-box {
+        padding: 15px;
     }
 
-    .word-square{
-        padding:10px;
+    .word-square {
+        padding: 10px;
     }
 
-    .word-inner-square{
-        width:40px;
-        height:40px;
+    .word-inner-square {
+        width: 40px;
+        height: 40px;
     }
 
-    .word-text{
-        width:40px;
-        height:40px;
+    .word-text {
+        width: 40px;
+        height: 40px;
         line-height: 40px;
     }
 }
 
 /* Large Desktop */
 @media only screen and (min-width: 1200px) {
-    .parent{
+    .parent {
         margin-top: 35px;
     }
 
-    .word-square, .hint-box,.keyboard-parent{
+    .word-square,
+    .hint-box,
+    .keyboard-parent {
         margin-top: 25px;
     }
 }

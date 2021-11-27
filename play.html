@@ -1,117 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>HANGMAN</title>    
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="WIP">
 
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/play.css">
-    </head>
+<head>
+    <title>HANGMAN</title>
 
-    <body>
-        <header>
-            <div class="title">
-                <h1><span class="strike">HANG</span>MAN</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WIP">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/play.css">
+</head>
+
+<body>
+    <header>
+        <div class="title">
+            <h1><span class="strike">HANG</span>MAN</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li>
+                    <a class="clickable" href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a id="myBtn" class="clickable">How To Play</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>
+                    Either use the onscreen keyboard to make your guesses, or if on a laptop or desktop use your
+                    keyboard.
+                </p>
             </div>
+        </div>
+    </header>
 
-            <nav>
-                <ul>
-                    <li>
-                        <a class="clickable" href="index.html">Home</a>
-                    </li>
-
-                    <li>
-                        <a id="myBtn" class="clickable">How To Play</a>
-                    </li> 
-                </ul>
-            </nav>
-
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p>
-                      Using the dropdown labeled "Word Set" select the theme of questions you want, and toggle the checkbox if you want to play timed.
-                      <br>
-                      Once you hit play, either use the onscreen keyboard to make your guesses, or if on a laptop or desktop use your keyboard.
-                    </p>
-                </div>
-              </div>
-        </header>
-
-        <main>
-            <div class="parent">
-                <!-- timer -->
-                <div id="timer-parent" class="timer-square violet-border">
-                    <div class="timer-inner-square red-border">
-                        <p id="timer-text" class="timer-text">999</p>
-                    </div>
-                </div>
-
-                <!-- chances -->
-                <div id="chances-parent" class="chances-square violet-border">
-                    <div class="chances-inner-square red-border">
-                        <p id="chances" class="chances-text">?</p>
-                    </div>
-                </div>
-
-                <!-- next word -->
-                <div id="next-parent" class="next-square hidden violet-border">
-                    <div id="next" class="next-inner-square red-border clickable">
-                        <p  class="next-text">Play Again</p>
-                        <p class="next-spacebar-text">(Spacebar)</p>
-                    </div>
+    <main>
+        <div class="parent">
+            <!-- timer -->
+            <div id="timer-parent" class="timer-square violet-border">
+                <div class="timer-inner-square red-border">
+                    <p id="timer-text" class="timer-text">999</p>
                 </div>
             </div>
 
-            <!-- word -->
-            <div id="word-container" class="word-square violet-border">
-                <div class="word-inner-square red-border">
-                    <p class="word-text">?</p>
+            <!-- chances -->
+            <div id="chances-parent" class="chances-square violet-border">
+                <div class="chances-inner-square red-border">
+                    <p id="chances" class="chances-text">?</p>
                 </div>
             </div>
 
-            <div class="hint-box violet-border">
-                <p id="hint-text"></p>
-            </div>
-
-            <div class="keyboard-parent">
-                <div class="keys-box violet-border">
-                    <div id="A" class="key-box blue-border clickable"><p class="key-letter">A</p></div>
-                    <div id="B" class="key-box blue-border clickable"><p class="key-letter">B</p></div>
-                    <div id="C" class="key-box blue-border clickable"><p class="key-letter">C</p></div>
-                    <div id="D" class="key-box blue-border clickable"><p class="key-letter">D</p></div>
-                    <div id="E" class="key-box blue-border clickable"><p class="key-letter">E</p></div>
-                    <div id="F" class="key-box blue-border clickable"><p class="key-letter">F</p></div>
-                    <div id="G" class="key-box blue-border clickable"><p class="key-letter">G</p></div>
-                    <div id="H" class="key-box blue-border clickable"><p class="key-letter">H</p></div>
-                    <div id="I" class="key-box blue-border clickable"><p class="key-letter">I</p></div>
-                    <div id="J" class="key-box blue-border clickable"><p class="key-letter">J</p></div>
-                    <div id="K" class="key-box blue-border clickable"><p class="key-letter">K</p></div>
-                    <div id="L" class="key-box blue-border clickable"><p class="key-letter">L</p></div>
-
-                    <div id="M" class="key-box blue-border clickable"><p class="key-letter">M</p></div>
-                    <div id="N" class="key-box blue-border clickable"><p class="key-letter">N</p></div>
-                    <div id="O" class="key-box blue-border clickable"><p class="key-letter">O</p></div>
-                    <div id="P" class="key-box blue-border clickable"><p class="key-letter">P</p></div>
-                    <div id="Q" class="key-box blue-border clickable"><p class="key-letter">Q</p></div>
-                    <div id="R" class="key-box blue-border clickable"><p class="key-letter">R</p></div>
-                    <div id="S" class="key-box blue-border clickable"><p class="key-letter">S</p></div>
-                    <div id="T" class="key-box blue-border clickable"><p class="key-letter">T</p></div>
-                    <div id="U" class="key-box blue-border clickable"><p class="key-letter">U</p></div>
-                    <div id="V" class="key-box blue-border clickable"><p class="key-letter">V</p></div>
-                    <div id="W" class="key-box blue-border clickable"><p class="key-letter">W</p></div>
-                    <div id="X" class="key-box blue-border clickable"><p class="key-letter">X</p></div>
-                    <div id="Y" class="key-box blue-border clickable"><p class="key-letter">Y</p></div>
-                    <div id="Z" class="key-box blue-border clickable"><p class="key-letter">Z</p></div>      
+            <!-- next word -->
+            <div id="next-parent" class="next-square hidden violet-border">
+                <div id="next" class="next-inner-square red-border clickable">
+                    <p class="next-text">Play Again</p>
+                    <p class="next-spacebar-text">(Spacebar)</p>
                 </div>
             </div>
-        </main>
+        </div>
 
-        <script src="assets/js/script.js"></script>
-        <script src="assets/js/modal.js"></script>
-    </body>
+        <!-- word -->
+        <div id="word-container" class="word-square violet-border">
+            <div class="word-inner-square red-border">
+                <p class="word-text">?</p>
+            </div>
+        </div>
+
+        <div class="hint-box violet-border">
+            <p id="hint-text"></p>
+        </div>
+
+        <div class="keyboard-parent">
+            <div class="keys-box violet-border">
+                <div id="A" class="key-box blue-border clickable">
+                    <p class="key-letter">A</p>
+                </div>
+                <div id="B" class="key-box blue-border clickable">
+                    <p class="key-letter">B</p>
+                </div>
+                <div id="C" class="key-box blue-border clickable">
+                    <p class="key-letter">C</p>
+                </div>
+                <div id="D" class="key-box blue-border clickable">
+                    <p class="key-letter">D</p>
+                </div>
+                <div id="E" class="key-box blue-border clickable">
+                    <p class="key-letter">E</p>
+                </div>
+                <div id="F" class="key-box blue-border clickable">
+                    <p class="key-letter">F</p>
+                </div>
+                <div id="G" class="key-box blue-border clickable">
+                    <p class="key-letter">G</p>
+                </div>
+                <div id="H" class="key-box blue-border clickable">
+                    <p class="key-letter">H</p>
+                </div>
+                <div id="I" class="key-box blue-border clickable">
+                    <p class="key-letter">I</p>
+                </div>
+                <div id="J" class="key-box blue-border clickable">
+                    <p class="key-letter">J</p>
+                </div>
+                <div id="K" class="key-box blue-border clickable">
+                    <p class="key-letter">K</p>
+                </div>
+                <div id="L" class="key-box blue-border clickable">
+                    <p class="key-letter">L</p>
+                </div>
+
+                <div id="M" class="key-box blue-border clickable">
+                    <p class="key-letter">M</p>
+                </div>
+                <div id="N" class="key-box blue-border clickable">
+                    <p class="key-letter">N</p>
+                </div>
+                <div id="O" class="key-box blue-border clickable">
+                    <p class="key-letter">O</p>
+                </div>
+                <div id="P" class="key-box blue-border clickable">
+                    <p class="key-letter">P</p>
+                </div>
+                <div id="Q" class="key-box blue-border clickable">
+                    <p class="key-letter">Q</p>
+                </div>
+                <div id="R" class="key-box blue-border clickable">
+                    <p class="key-letter">R</p>
+                </div>
+                <div id="S" class="key-box blue-border clickable">
+                    <p class="key-letter">S</p>
+                </div>
+                <div id="T" class="key-box blue-border clickable">
+                    <p class="key-letter">T</p>
+                </div>
+                <div id="U" class="key-box blue-border clickable">
+                    <p class="key-letter">U</p>
+                </div>
+                <div id="V" class="key-box blue-border clickable">
+                    <p class="key-letter">V</p>
+                </div>
+                <div id="W" class="key-box blue-border clickable">
+                    <p class="key-letter">W</p>
+                </div>
+                <div id="X" class="key-box blue-border clickable">
+                    <p class="key-letter">X</p>
+                </div>
+                <div id="Y" class="key-box blue-border clickable">
+                    <p class="key-letter">Y</p>
+                </div>
+                <div id="Z" class="key-box blue-border clickable">
+                    <p class="key-letter">Z</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/modal.js"></script>
+</body>
+
 </html>

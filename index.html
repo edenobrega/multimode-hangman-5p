@@ -1,85 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>HANGMAN</title>    
-        
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="WIP">
 
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/index.css">
-    </head>
+<head>
+    <title>HANGMAN</title>
 
-    <body>
-        <header>
-            <div class="title">
-                <h1><span class="strike">HANG</span>MAN</h1>
-            </div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WIP">
 
-            <nav>
-                <ul>
-                    <li>
-                        <a  class="clickable" href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a id="myBtn" class="clickable">How To Play</a>
-                    </li>                    
-                </ul>
-            </nav>
-        </header>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
 
-        <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <p>
-                  Using the dropdown labeled "Word Set" select the theme of questions you want, and toggle the checkbox if you want to play timed.
-                  <br>
-                  Once you hit play, either use the onscreen keyboard to make your guesses, or if on a laptop or desktop use your keyboard.
-                </p>
-            </div>
-          </div>
+<body>
+    <header>
+        <div class="title">
+            <h1><span class="strike">HANG</span>MAN</h1>
+        </div>
 
-        <main>
-            <section class="parent-1">
-                <h2>Single Word</h2>
-                <p>
-                    Attempt to guess a single word from a selection of word sets!
-                </p>
+        <nav>
+            <ul>
+                <li>
+                    <a class="clickable" href="index.html">Home</a>
+                </li>
+                <li>
+                    <a id="myBtn" class="clickable">How To Play</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+                Using the dropdown labeled "Word Set" select the theme of questions you want, and toggle the checkbox if
+                you want to play timed.
                 <br>
-                <p>Word Set</p>
-                <select id="word-select">
-                    <option value="words">Words</option>
-                    <option value="countries">Countries</option>
-                </select>                
-                <br>
-                <input type="checkbox" name="word-timed" id="word-timed">
-                <label for="word-timed">Timed</label>
-                <br>
-                <a id="first-play" class="circle mode-button clickable" href="play.html?phrase=false&timed=false&file=words">Play</a>    
-            </section>
+                Once you hit play, either use the onscreen keyboard to make your guesses, or if on a laptop or desktop
+                use your keyboard.
+            </p>
+        </div>
+    </div>
 
-            <section class="parent-2">
-                <h2>Phrases</h2>    
-                <p>
-                    Attempt to guess a phrase from idioms to quotes in our selection of word sets!
-                </p>  
-                <br>
-                <p>Word Set</p>
-                <select id="phrase-select">
-                    <option value="phrases">Popular British Idioms</option>
-                    <option value="filmquote">Famous Film Quotes</option>
-                </select>                
-                <br>
-                <input type="checkbox" name="phrase-timed" id="phrase-timed">
-                <label for="phrase-timed">Timed</label>
-                <br>
-                <a id="second-play" class="circle mode-button clickable" href="play.html?phrase=true&timed=false&file=phrases">Play</a>                     
-            </section>
-        </main>
+    <main>
+        <section class="parent-1">
+            <h2>Single Word</h2>
+            <p>
+                Attempt to guess a single word from a selection of word sets!
+            </p>
+            <br>
+            <p>Word Set</p>
+            <select id="word-select">
+                <option value="words">Words</option>
+                <option value="countries">Countries</option>
+            </select>
+            <br>
+            <input type="checkbox" name="word-timed" id="word-timed">
+            <label for="word-timed">Timed</label>
+            <br>
+            <a id="first-play" class="circle mode-button clickable"
+                href="play.html?phrase=false&timed=false&file=words">Play</a>
+        </section>
 
-        <script src="assets/js/index.js"></script>
-        <script src="assets/js/modal.js"></script>
-    </body>
+        <section class="parent-2">
+            <h2>Phrases</h2>
+            <p>
+                Attempt to guess a phrase from a selection of word sets!
+            </p>
+            <br>
+            <p>Word Set</p>
+            <select id="phrase-select">
+                <option value="phrases">Popular British Idioms</option>
+                <option value="filmquote">Famous Film Quotes</option>
+            </select>
+            <br>
+            <input type="checkbox" name="phrase-timed" id="phrase-timed">
+            <label for="phrase-timed">Timed</label>
+            <br>
+            <a id="second-play" class="circle mode-button clickable"
+                href="play.html?phrase=true&timed=false&file=phrases">Play</a>
+        </section>
+    </main>
+
+    <script src="assets/js/index.js"></script>
+    <script src="assets/js/modal.js"></script>
+</body>
+
 </html>

@@ -1,59 +1,64 @@
-main{
+main {
     text-align: center;
 }
 
-.mode-button{
+.mode-button {
     font-family: 'Fira Sans';
     text-decoration: none;
     line-height: 35px;
-    font-size:20px;
+    font-size: 20px;
 }
 
-.parent-1{
-    float:left;
+.parent-1 {
+    float: left;
 }
 
-.parent-2{
-    float:right;
+.parent-2 {
+    float: right;
 }
 
-.parent-1, .parent-2{
+.parent-1,
+.parent-2 {
     margin-top: 40px;
-    width:50%;
+    width: 50%;
 }
 
-.parent-1 p, .parent-2 p{
+.parent-1 p,
+.parent-2 p {
     line-height: 25px;
     font-family: 'Hind Guntur';
     font-size: 0.95rem;
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
-.parent-1 h2, .parent-2 h2{
+.parent-1 h2,
+.parent-2 h2 {
     text-decoration: underline;
-    color:whitesmoke;
+    color: whitesmoke;
     font-family: 'Fira Sans';
 }
 
-label{
-    color:whitesmoke;
+label {
+    color: whitesmoke;
     font-family: "Hind Guntur";
 }
 
 select {
-	background-color: unset;
-	border: 1px solid #BFDAB9;
-	color: white;
+    background-color: unset;
+    border: 1px solid #BFDAB9;
+    color: white;
 }
 
-option{
+option {
     background-color: #1a1a24;
 }
 
-@media only screen and (min-width: 992px) {    
-    .parent-1, .parent-2{
-        float:none;
-        width:40%;
-        display:inline-block;
+@media only screen and (min-width: 992px) {
+
+    .parent-1,
+    .parent-2 {
+        float: none;
+        width: 40%;
+        display: inline-block;
     }
 }

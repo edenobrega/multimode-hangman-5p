@@ -1,5 +1,5 @@
 /* jshint esversion: 8 */
-let loaded_values = []; 
+let loaded_values = [];
 let currentWord;
 let timer;
 let timerOnscreen;
@@ -12,19 +12,19 @@ let phrase = true;
 let file = "";
 
 // Characters that should not appear in answers
-let nonGuessable = [',','!',"'","."];
+let nonGuessable = [',', '!', "'", "."];
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
 // Get URL params
-if(urlParams.get("phrase") !== null){
+if (urlParams.get("phrase") !== null) {
     phrase = urlParams.get("phrase") == "true";
 }
-if(urlParams.get("timed") !== null){
+if (urlParams.get("timed") !== null) {
     timed = urlParams.get("timed") == "true";
 }
-if(urlParams.get("file")){
+if (urlParams.get("file")) {
     file = urlParams.get("file");
 }
 
@@ -34,22 +34,22 @@ document.getElementById("next").addEventListener("click", resetGame);
 // Get all keys on the onscreen keyboard
 let keys = document.getElementsByClassName("key-box");
 // Loop through and add a onclick event to each div
-for(let i = 0; i < keys.length; i++){
+for (let i = 0; i < keys.length; i++) {
     // keys[i].addEventListener("click", attemptGuess(keys[i].id.toLowerCase()));
-    keys[i].addEventListener("click", function(){
+    keys[i].addEventListener("click", function () {
         attemptGuess(keys[i].id.toLowerCase());
     });
 }
 
 // eventlistener for keyboard use
-document.onkeydown = function(evt) {
+document.onkeydown = function (evt) {
     evt = evt || window.event;
     // Checks if the key that was pressed is in the alphabet, and is a single letter
-    if(evt.key.match(/[a-z]/i) && evt.key.length == 1){
+    if (evt.key.match(/[a-z]/i) && evt.key.length == 1) {
         attemptGuess(evt.key.toLowerCase());
     }
     // If the game is not active and the spacebar was pressed, restart game
-    else if(active === false && evt.key == " "){
+    else if (active === false && evt.key == " ") {
         resetGame();
     }
 };
@@ -57,23 +57,22 @@ document.onkeydown = function(evt) {
 startGame();
 
 // Load the csv file into an array
-function loadValues(){
+function loadValues() {
     let raw_values;
     let fileName;
-    
-    if(phrase){
-        fileName = "assets/answers/sentence/"+file+".csv";
-    }
-    else{
-        fileName = "assets/answers/non-sentence/"+file+".csv";
+
+    if (phrase) {
+        fileName = "assets/answers/sentence/" + file + ".csv";
+    } else {
+        fileName = "assets/answers/non-sentence/" + file + ".csv";
     }
 
     return fetch(fileName)
         .then(response => response.text())
         .then(text => {
             raw_values = text.toLowerCase().split('\n');
-            for(let i = 1; i < raw_values.length; i++){
-                let u = raw_values[i].split(','); 
+            for (let i = 1; i < raw_values.length; i++) {
+                let u = raw_values[i].split(',');
                 loaded_values.push({
                     answer: u[0].trim(),
                     hint: u[1].trim(),
@@ -86,18 +85,18 @@ function loadValues(){
 }
 
 // Randomly selects a word from the loaded array
-function selectWord(){
+function selectWord() {
     currentWord = Math.floor(Math.random() * loaded_values.length);
 }
 
 // Check to see if guessed character is correct
-function attemptGuess(character){
+function attemptGuess(character) {
     // catch if not active, already guessed, or not a a-z character
-    if(!active || loaded_values[currentWord].guessedAnswers.includes(character) || !character.match(/[a-z]/i) || character.length != 1){
+    if (!active || loaded_values[currentWord].guessedAnswers.includes(character) || !character.match(/[a-z]/i) || character.length != 1) {
         return;
     }
     let ele = document.getElementById(character.toUpperCase());
-    if(loaded_values[currentWord].letterAnswers.includes(character)){
+    if (loaded_values[currentWord].letterAnswers.includes(character)) {
         ele = document.getElementById(character.toUpperCase());
         // Add letter to guessed answers list 
         loaded_values[currentWord].guessedAnswers.push(character);
@@ -108,24 +107,23 @@ function attemptGuess(character){
         // Get every location of that letter
         let locations = [];
         let idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase());
-        while(idx != -1){
+        while (idx != -1) {
             locations.push(idx);
-            idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase(), idx+1);
+            idx = loaded_values[currentWord].answer.indexOf(character.toLowerCase(), idx + 1);
         }
 
         // Use locations to set styling and contents
         for (let index = 0; index < locations.length; index++) {
             document.getElementById(`letter-${locations[index]}-text`).innerText = character.toUpperCase();
-            let changeSquare = document.getElementById(`letter-${locations[index]}`);  
+            let changeSquare = document.getElementById(`letter-${locations[index]}`);
             changeSquare.classList.remove("red-border");
-            changeSquare.classList.add("green-border");               
+            changeSquare.classList.add("green-border");
         }
 
-        if(checkCompletion()){
+        if (checkCompletion()) {
             endGame();
         }
-    }
-    else{
+    } else {
         ele = document.getElementById(character.toUpperCase());
         // Get the clicked letter and disable it
         ele.classList.add("red-border");
@@ -133,7 +131,7 @@ function attemptGuess(character){
 
         guessesLeft--;
         document.getElementById("chances").innerText = guessesLeft;
-        if(guessesLeft == 0){
+        if (guessesLeft == 0) {
             endGame();
         }
     }
@@ -142,25 +140,23 @@ function attemptGuess(character){
     ele.classList.remove("blue-border");
 }
 // creates/modifies needed HTML 
-function buildHTML(){
+function buildHTML() {
     let lettersParentHTML = document.getElementById("word-container");
     let newHtml = "";
 
     for (let index = 0; index < loaded_values[currentWord].answer.length; index++) {
-        if(loaded_values[currentWord].answer[index] === " "){
+        if (loaded_values[currentWord].answer[index] === " ") {
             newHtml += "<br>";
-        }
-        else if(nonGuessable.includes(loaded_values[currentWord].answer[index])){
+        } else if (nonGuessable.includes(loaded_values[currentWord].answer[index])) {
             newHtml += `
             <div id="letter-${index}" class="word-inner-square green-border">
                 <p id="letter-${index}-text" class="word-text">${loaded_values[currentWord].answer[index]}</p>
-            </div>`;  
-        }
-        else{
+            </div>`;
+        } else {
             newHtml += `
             <div id="letter-${index}" class="word-inner-square red-border">
                 <p id="letter-${index}-text" class="word-text">?</p>
-            </div>`;     
+            </div>`;
         }
     }
 
@@ -171,41 +167,39 @@ function buildHTML(){
 }
 
 // Runs all functions needed in correct order, and 
-function startGame(fileName){
-    if(loaded_values.length == 0){
+function startGame(fileName) {
+    if (loaded_values.length == 0) {
         loadValues(fileName)
             .then(_res => {
                 selectWord();
                 buildHTML();
-            });        
-    }
-    else{
+            });
+    } else {
         selectWord();
         buildHTML();
     }
 
-    if(timed === true){
-        startTimer(120);                
-    }
-    else{
+    if (timed === true) {
+        startTimer(120);
+    } else {
         let timerParent = document.getElementById("timer-parent");
         timerParent.classList.add("hidden");
     }
-    
+
     guessesLeft = 11;
     document.getElementById("chances").innerText = guessesLeft;
 }
 
 // Reveal remaining letters and enable play again button
-function endGame(){
+function endGame() {
     active = false;
-    if(timed){
+    if (timed) {
         window.clearTimeout(timer);
-        window.clearInterval(timerOnscreen);   
-        document.getElementById("timer-parent").classList.add("hidden");  
+        window.clearInterval(timerOnscreen);
+        document.getElementById("timer-parent").classList.add("hidden");
     }
     // Check if player failed to complete
-    if(!(checkCompletion())){
+    if (!(checkCompletion())) {
         // get missing letters
         let missing = loaded_values[currentWord].letterAnswers.filter(val => !loaded_values[currentWord].guessedAnswers.includes(val));
 
@@ -213,10 +207,10 @@ function endGame(){
             // get each location of those missing letters
             let locations = [];
             let idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase());
-            while(idx != -1){
+            while (idx != -1) {
                 locations.push(idx);
-                idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase(), idx+1);
-            }            
+                idx = loaded_values[currentWord].answer.indexOf(missing[index].toLowerCase(), idx + 1);
+            }
             // change the text of each of those
             for (let index2 = 0; index2 < locations.length; index2++) {
                 document.getElementById(`letter-${locations[index2]}-text`).innerText = missing[index].toUpperCase();
@@ -229,9 +223,9 @@ function endGame(){
 }
 
 // Reset the game and html
-function resetGame(){
+function resetGame() {
     let keys = document.getElementsByClassName("key-box");
-    for(let i = 0; i < keys.length;i++){
+    for (let i = 0; i < keys.length; i++) {
         keys[i].classList.remove("blue-border");
         keys[i].classList.remove("red-border");
         keys[i].classList.remove("green-border");
@@ -241,8 +235,8 @@ function resetGame(){
         keys[i].classList.add("clickable");
     }
 
-    if(timed){
-        document.getElementById("timer-parent").classList.remove("hidden");        
+    if (timed) {
+        document.getElementById("timer-parent").classList.remove("hidden");
     }
     document.getElementById("chances-parent").classList.remove("hidden");
     document.getElementById("next-parent").classList.add("hidden");
@@ -251,24 +245,24 @@ function resetGame(){
 }
 
 // Begins the timer | In seconds
-function startTimer(gameLength){
+function startTimer(gameLength) {
     maxTime = gameLength;
-    timer = setTimeout(endGame ,(gameLength * 1000)+1000);
+    timer = setTimeout(endGame, (gameLength * 1000) + 1000);
     document.getElementById("timer-text").innerText = gameLength;
-    timerOnscreen = setInterval(updateOnScreenTimer ,1000);
+    timerOnscreen = setInterval(updateOnScreenTimer, 1000);
 }
 
 // Updates the html element that holds the timer
-function updateOnScreenTimer(){
+function updateOnScreenTimer() {
     maxTime--;
     document.getElementById("timer-text").innerText = maxTime;
-    if(maxTime == -1){
+    if (maxTime == -1) {
         window.clearInterval(timerOnscreen);
     }
 }
 
 // Check if all correct letters have been guessed
-function checkCompletion(){
+function checkCompletion() {
     // Sort the lists and then turn into them into strings so that they can be compared
     return loaded_values[currentWord].guessedAnswers.sort().join(",") === loaded_values[currentWord].letterAnswers.sort().join(",");
 }
