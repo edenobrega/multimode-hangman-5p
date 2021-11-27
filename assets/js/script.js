@@ -35,16 +35,14 @@ document.getElementById("next").addEventListener("click", resetGame);
 let keys = document.getElementsByClassName("key-box");
 // Loop through and add a onclick event to each div
 for(let i = 0; i < keys.length; i++){
-    keys[i].addEventListener("click", function(){
-        attemptGuess(keys[i].id.toLowerCase());
-    });
+    keys[i].addEventListener("click", attemptGuess(keys[i].id.toLowerCase()));
 }
 
 // eventlistener for keyboard use
 document.onkeydown = function(evt) {
     evt = evt || window.event;
-    // Checks if the key that was pressed is in the alphabet
-    if(evt.key.match(/[a-z]/i)){
+    // Checks if the key that was pressed is in the alphabet, and is a single letter
+    if(evt.key.match(/[a-z]/i) && evt.key.length == 1){
         attemptGuess(evt.key.toLowerCase());
     }
     // If the game is not active and the spacebar was pressed, restart game
@@ -91,7 +89,8 @@ function selectWord(){
 
 // Check to see if guessed character is correct
 function attemptGuess(character){
-    if(!active || loaded_values[currentWord].guessedAnswers.includes(character) || !character.match(/[a-z]/i)){
+    // catch if not active, already guessed, or not a a-z character
+    if(!active || loaded_values[currentWord].guessedAnswers.includes(character) || !character.match(/[a-z]/i) || character.length != 1){
         return;
     }
     let ele = document.getElementById(character.toUpperCase());
@@ -199,7 +198,8 @@ function endGame(){
     active = false;
     if(timed){
         window.clearTimeout(timer);
-        window.clearInterval(timerOnscreen);        
+        window.clearInterval(timerOnscreen);   
+        document.getElementById("timer-parent").classList.add("hidden");  
     }
     // Check if player failed to complete
     if(!(checkCompletion())){
@@ -221,9 +221,6 @@ function endGame(){
         }
     }
 
-    if(timed){
-        document.getElementById("timer-parent").classList.add("hidden");        
-    }
     document.getElementById("chances-parent").classList.add("hidden");
     document.getElementById("next-parent").classList.remove("hidden");
 }
@@ -232,14 +229,13 @@ function endGame(){
 function resetGame(){
     let keys = document.getElementsByClassName("key-box");
     for(let i = 0; i < keys.length;i++){
-        keys[i].classList.remove("blue-border")
-        keys[i].classList.remove("red-border")
-        keys[i].classList.remove("green-border")
-        keys[i].getElementsByTagName("p")[0].classList.remove("strike")
+        keys[i].classList.remove("blue-border");
+        keys[i].classList.remove("red-border");
+        keys[i].classList.remove("green-border");
+        keys[i].getElementsByTagName("p")[0].classList.remove("strike");
 
-        keys[i].classList.add("blue-border")
+        keys[i].classList.add("blue-border");
         keys[i].classList.add("clickable");
-
     }
 
     if(timed){
