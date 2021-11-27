@@ -53,7 +53,7 @@ option{
 @media only screen and (min-width: 992px) {    
     .parent-1, .parent-2{
         float:none;
-        width:30%;
+        width:40%;
         display:inline-block;
     }
 }
