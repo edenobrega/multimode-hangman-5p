@@ -3,8 +3,15 @@ A hangman word game website, built with multiple ways to play, Single Words or P
 
 ![](documentation/images/amiresponsive.png)
 
+## User Stories
+- As a user I want to be able to choose to play with a timer or without one
+- As a user I want to be able to pick from a selection of word sets
+- As a user I want to be able to use my keyboard to play
+- As a user I want to be able to play from a mobile device
+- As a user if i fail to guess within 11 guesses or 120seconds i want to be shown the answer
+
 ## UX
-For the design i chose to have a very simple site using a dark single color background so that other elements can use brighter colors and stand out, making visibility easier. On the page for actually playing the game, each section will be grouped by a violet border, e.g. keyboard for you guesses and the hint will be in two different boxes. The timer will be in a larger font with a larger innerbox to make it stand out more to the user. For the coloring of the keyboard, an unused Letter will be in blue, as this is the starting color for all of them the user will instantly understand that means its an unused letter, once selected the letter will change to either red or green depending on if the guess was correct or not, and in the box that holds the word to be guessed, if the selected letter is correct, the corresponding box will be changed to green and hold that letter.
+For the design I chose to have a very simple site using a dark single color background so that other elements can use brighter colors and stand out, making visibility easier. On the page for actually playing the game, each section will be grouped by a violet border, e.g. keyboard for you guesses and the hint will be in two different boxes. The timer will be in a larger font with a larger innerbox to make it stand out more to the user. For the coloring of the keyboard, an unused Letter will be in blue, as this is the starting color for all of them the user will instantly understand that means its an unused letter, once selected the letter will change to either red or green depending on if the guess was correct or not, and in the box that holds the word to be guessed, if the selected letter is correct, the corresponding box will be changed to green and hold that letter.
 
 ### Color Scheme
 I used [colorminds](http://colormind.io/) to find create a color pallete for my site.
@@ -18,7 +25,7 @@ I plan to only use two colors from this, one for the background and another for 
 ### Typography
 To select my fonts I used [Font Joy](https://fontjoy.com/)
 
-I dedcided to use a simple, thin, undecrotive font. I chose Fira Sans and used the site above to find a second font to pair with it. I used Fira Sans as the Header font as it stands out, because of that i also used it in the game page for all of the letters used, i thought it would be distracting to have multiple fonts on the screen due to the many differnet buttons and sections, and having a font that stands out would help with this. 
+I dedcided to use a simple, thin, undecrotive font. I chose Fira Sans and used the site above to find a second font to pair with it. I used Fira Sans as the Header font as it stands out, because of that I also used it in the game page for all of the letters used, I thought it would be distracting to have multiple fonts on the screen due to the many differnet buttons and sections, and having a font that stands out would help with this. 
 
 ![](documentation/fonts.png)
 
@@ -34,6 +41,11 @@ I dedcided to use a simple, thin, undecrotive font. I chose Fira Sans and used t
 *Play Wireframe*
 ## Features
 ### Existing Features
+- How To Play
+    - Link in nav bar that brings up a modal to teach you how to play the game
+
+![How To Play](documentation/features/how-to-play.png)
+
 - Game Options
     - Dropdown that auto fills word sets for the user to pick from
     - Radio button too select if you want have a timer or not
@@ -77,33 +89,14 @@ Have a random mode which uses an api like https://dictionaryapi.dev/ to get rand
 
 - I used [html](https://en.wikipedia.org/wiki/HTML) to design the site.
 - And [CSS](https://en.wikipedia.org/wiki/CSS) to style the site.
-- For the games functionality, i used [Javascript](https://en.wikipedia.org/wiki/JavaScript)
+- For the games functionality, I used [Javascript](https://en.wikipedia.org/wiki/JavaScript)
 - To help with styling I used a css debugger to help me with things like positioning and size: [link](https://github.com/benscabbia/x-ray).
 - For my IDE I used Gitpod, [link](https://www.gitpod.io/).
-![gitpod](documentation/images/gitpod.png)
+- I used githubs [projects](https://github.com/edenobrega/multimode-hangman-5p/projects/1) tab to track what i needed to do and what problems i came across 
 
 ## Testing
 
 To see all testing see [TESTING.md](documentation/TESTING.md)
-
-### Responsiveness
-![index.html shown on my phone, huawei mate 20 pro](documentation/responsive/index-mobile.png)
-
-*index.html shown on my phone, huawei mate 20 pro*
-
-![play.html shown on my phone, huawei mate 20 pro](documentation/responsive/play-mobile.png)
-
-*play.html shown on my phone, huawei mate 20 pro*
-
-![index.html shown at 880px](documentation/responsive/play-880px.png)
-
-*index.html shown at 880px*
-
-![index.html shown at 1280px](documentation/responsive/play-1280px.png)
-
-*index.html shown at 1280px*
-
-### Unfixed Bugs
 
 ## Deployment
 The site was deployed to GitHub pages. The steps to deploy are as follows:
@@ -120,7 +113,9 @@ To make a local copy of this project, you can clone it by typing the following i
 
 - `git clone https://github.com/edenobrega/multimode-hangman-5p.git`
 
-Alternatively, if using Gitpod, you can click the green Gitpod button, or use [this link](https://gitpod.io/#https://github.com/edenobrega/multimode-hangman-5p)
+Alternatively, if using Gitpod, you can click below to create your own workspace using this repository.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/edenobrega/multimode-hangman-5p)
 
 ## Credits
 
