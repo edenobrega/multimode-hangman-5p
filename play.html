@@ -6,18 +6,23 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WIP">
+    <meta name="description" content="Hangman with multiple modes and phrases">
 
+    <!-- Favicon -->
+    <link rel="icon" sizes="192x192" href="assets/images/favicon.png" type="image/x-icon">
+    
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/play.css">
 </head>
 
 <body>
     <header>
+        <!-- site title -->
         <div class="title">
             <h1><span class="strike">HANG</span>MAN</h1>
         </div>
 
+        <!-- navigation bar -->
         <nav>
             <ul>
                 <li>
@@ -30,6 +35,7 @@
             </ul>
         </nav>
 
+        <!-- modal -->
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
@@ -67,17 +73,19 @@
             </div>
         </div>
 
-        <!-- word -->
+        <!-- question conatiner -->
         <div id="word-container" class="word-square violet-border">
             <div class="word-inner-square red-border">
                 <p class="word-text">?</p>
             </div>
         </div>
 
+        <!-- hint box -->
         <div class="hint-box violet-border">
             <p id="hint-text"></p>
         </div>
 
+        <!-- onscreen keyboard -->
         <div class="keyboard-parent">
             <div class="keys-box violet-border">
                 <div id="A" class="key-box blue-border clickable">
@@ -163,6 +171,7 @@
         </div>
     </main>
 
+    <!-- scripts -->
     <script src="assets/js/script.js"></script>
     <script src="assets/js/modal.js"></script>
 </body>

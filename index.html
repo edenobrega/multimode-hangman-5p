@@ -6,7 +6,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WIP">
+    <meta name="description" content="Hangman with multiple modes and phrases">
+
+    <!-- Favicon -->
+    <link rel="icon" sizes="192x192" href="assets/images/favicon.png" type="image/x-icon">
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/index.css">
@@ -14,10 +17,12 @@
 
 <body>
     <header>
+        <!-- website title -->
         <div class="title">
             <h1><span class="strike">HANG</span>MAN</h1>
         </div>
 
+        <!-- navigation bar -->
         <nav>
             <ul>
                 <li>
@@ -30,6 +35,7 @@
         </nav>
     </header>
 
+    <!-- modal -->
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
@@ -45,6 +51,7 @@
     </div>
 
     <main>
+        <!-- left side content container -->
         <section class="parent-1">
             <h2>Single Word</h2>
             <p>
@@ -64,6 +71,7 @@
                 href="play.html?phrase=false&timed=false&file=words">Play</a>
         </section>
 
+        <!-- right side content container -->
         <section class="parent-2">
             <h2>Phrases</h2>
             <p>
@@ -84,6 +92,7 @@
         </section>
     </main>
 
+    <!-- scripts -->
     <script src="assets/js/index.js"></script>
     <script src="assets/js/modal.js"></script>
 </body>
