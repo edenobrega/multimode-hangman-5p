@@ -58,7 +58,7 @@ option {
     .parent-1,
     .parent-2 {
         float: none;
-        width: 40%;
+        width: 25%;
         display: inline-block;
     }
 }
