@@ -7,6 +7,7 @@ main {
     text-decoration: none;
     line-height: 35px;
     font-size: 20px;
+    margin-top:10px;
 }
 
 .parent-1 {
@@ -29,6 +30,7 @@ main {
     font-family: 'Hind Guntur';
     font-size: 0.95rem;
     color: whitesmoke;
+    margin-top:10px;
 }
 
 .parent-1 h2,
@@ -47,6 +49,7 @@ select {
     background-color: unset;
     border: 1px solid #BFDAB9;
     color: white;
+    margin-bottom:10px;
 }
 
 option {
@@ -54,11 +57,10 @@ option {
 }
 
 @media only screen and (min-width: 992px) {
-
     .parent-1,
     .parent-2 {
         float: none;
-        width: 25%;
+        width:40%;
         display: inline-block;
     }
 }
