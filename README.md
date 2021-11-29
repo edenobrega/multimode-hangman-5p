@@ -1,7 +1,7 @@
 # Hang Man
-A hangman word game website, built with multiple ways to play, Single Words or Phrases, Timed or Untimed, and a selection of themed wordsets to choose from, all packaged together with a simple and easy on the eyes UI.  
+A hangman word game website, built with multiple ways to play, Single Words or Phrases, Timed or Untimed, and a selection of themed word sets to choose from, all packaged together with a simple and easy on the eyes UI.  
 
-![](documentation/images/amiresponsive.png)
+![](/documentation/amiresponsive.png)
 
 ## User Stories
 - As a user I want to be able to choose to play with a timer or without one
@@ -11,10 +11,10 @@ A hangman word game website, built with multiple ways to play, Single Words or P
 - As a user if i fail to guess within 11 guesses or 120seconds i want to be shown the answer
 
 ## UX
-For the design I chose to have a very simple site using a dark single color background so that other elements can use brighter colors and stand out, making visibility easier. On the page for actually playing the game, each section will be grouped by a violet border, e.g. keyboard for you guesses and the hint will be in two different boxes. The timer will be in a larger font with a larger innerbox to make it stand out more to the user. For the coloring of the keyboard, an unused Letter will be in blue, as this is the starting color for all of them the user will instantly understand that means its an unused letter, once selected the letter will change to either red or green depending on if the guess was correct or not, and in the box that holds the word to be guessed, if the selected letter is correct, the corresponding box will be changed to green and hold that letter.
-
+For the design I chose to have a very simple site using a dark single color background so that other elements can use brighter colors and stand out, making visibility easier. On the page for actually playing the game, each section will be grouped by a violet border, e.g. keyboard for you guesses and the hint will be in two different boxes. The timer will be in a larger font with a larger inner box to make it stand out more to the user. For the coloring of the keyboard, an unused Letter will be in blue, as this is the starting color for all of them the user will instantly understand that means its an unused letter, once selected the letter will change to either red or green depending on if the guess was correct or not, and in the box that holds the word to be guessed, if the selected letter is correct, the corresponding box will be changed to green and hold that letter.
+ 
 ### Color Scheme
-I used [colorminds](http://colormind.io/) to find create a color pallete for my site.
+I used [colorminds](http://colormind.io/) to create a color palette for my site.
 
 I plan to only use two colors from this, one for the background and another for button hover overs, as on the game page borders will be used heavily and they will be colored using mainly primary colors, so a simple colored background will help them stand out and with visibility.
 
@@ -25,7 +25,8 @@ I plan to only use two colors from this, one for the background and another for 
 ### Typography
 To select my fonts I used [Font Joy](https://fontjoy.com/)
 
-I dedcided to use a simple, thin, undecrotive font. I chose Fira Sans and used the site above to find a second font to pair with it. I used Fira Sans as the Header font as it stands out, because of that I also used it in the game page for all of the letters used, I thought it would be distracting to have multiple fonts on the screen due to the many differnet buttons and sections, and having a font that stands out would help with this. 
+I decided to use a simple, thin, functional font. I chose Fira Sans and used the site above to find a second font to pair with it. I used Fira Sans as the Header font as it stands out, because of that I also used it in the game page for all of the letters used, I thought it would be distracting to have multiple fonts on the screen due to the many different buttons and sections, and having a font that stands out would help with this.
+
 
 ![](documentation/fonts.png)
 

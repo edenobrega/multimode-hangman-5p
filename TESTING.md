@@ -15,7 +15,7 @@ I tested my user stories
 
 ![play mobile](documentation/responsive/play-mobile.png)
 
-- As a user if i fail to guess within 11 guesses or 120seconds i want to be shown the answer
+- As a user if I fail to guess within 11 guesses or 120seconds I want to be shown the answer
 
 ![phrase fail](documentation/features/phrase-fail.png)
 
@@ -45,6 +45,9 @@ I tested my user stories
 *index.html shown at 1280px*
 
 ### Unfixed Bugs
+JSHint gave me two warnings in script.js the first is about variables and confusing semantics, but the variable in question is used only once and is directly above the loop and is used to set how many times the loop should loop, and while I could just make multiple calls to each key of the keyboard, this way allows me the option to add different languages and punctuation to the html and not having to change this loop. The second warning is the same but having the variable in question at the top of the file rather than inside the function will fit the format of having all options at the top of the file.
+And the undefined variable is a [interface](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) that helps working with url params
+
 
 ### Code Validation
 For validation I used two tools from w3, for html I used [Nu Html Checker](https://validator.w3.org/nu/), for css I used [CSS Validation Service](https://jigsaw.w3.org/css-validator/) and for jscript I used [jshint](https://jshint.com/)
@@ -52,8 +55,7 @@ For validation I used two tools from w3, for html I used [Nu Html Checker](https
 JSHint validation for index.js, showing no errors
 ![jshint validation on index.script](documentation/testing/jshint-index.png)
 
-JSHint validation for script.js, showing no errors, but two warnings, the first is about variables and confusing semantics, but the variable in question is used only once and is directly above the loop which is think is better than having it inside and being continuesly called, and while i could just make multiple calls to each key of the keyboard, this way allows me the option to add different languages and punctuation to the html and not having to change this loop. The second warning is the same but i find having the variable at the top of the page better as its easier to find.
-And the undefined variable is a [interface](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) that helps working with url params
+JSHint validation for script.js, showing no errors, but two warnings, see unfixed bugs above.
 ![jshint validation on index.script](documentation/testing/jshint-script.png)
 
 JShint validation for modal.js, showing no errors
