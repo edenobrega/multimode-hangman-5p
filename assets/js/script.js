@@ -12,7 +12,7 @@ let phrase = true;
 let file = "";
 
 // Characters that should not appear in answers
-let nonGuessable = [',', '!', "'", "."];
+let nonGuessable = [',', '!', "'", ".","-"];
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
