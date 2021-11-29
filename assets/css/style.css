@@ -22,6 +22,7 @@ nav {
     padding-top: 50px;
 }
 
+/* style all nav links */
 nav a {
     color: whitesmoke;
     font-family: 'Fira Sans';
@@ -34,17 +35,18 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* place nav elements next to eachother */
 ul li {
     display: inline;
     margin: 0 0.5rem;
 }
 
+/* Creates a circle around element */
 .circle {
     color: #BFDAB9;
     font-weight: bold;
     border-radius: 100%;
-    border: 2px solid #BFDAB9;
-    ;
+    border: 2px solid #BFDAB9;;
     display: inline-block;
     padding: 5px;
     line-height: 50px;
@@ -76,6 +78,7 @@ h1 {
 
 .clickable:hover {
     background-color: #3A546F;
+    /* Change cursor to pointer to indicate clickability */
     cursor: pointer;
 }
 

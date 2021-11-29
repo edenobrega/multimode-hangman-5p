@@ -16,6 +16,7 @@ p {
 }
 
 /* timer */
+/* outer square for timer styling */
 .timer-square {
     display: inline-block;
     height: 75px;
@@ -23,6 +24,7 @@ p {
     margin-right: 10px;
 }
 
+/* set size and position of timer innersquar */
 .timer-inner-square {
     width: 50px;
     height: 50px;
@@ -32,6 +34,7 @@ p {
     margin-top: -25px;
 }
 
+/* center timer text */
 .timer-text {
     position: absolute;
     width: 50px;
@@ -48,6 +51,7 @@ p {
     display: inline-block
 }
 
+/* set height and center inner box for chances */
 .chances-inner-square {
     width: 50px;
     height: 50px;
@@ -57,6 +61,7 @@ p {
     margin-top: -25px;
 }
 
+/* center text for chances  */
 .chances-text {
     position: absolute;
     width: 50px;
@@ -65,7 +70,7 @@ p {
 }
 
 
-/* next game */
+/* next game box */
 .next-square {
     margin-left: 10px;
     height: 75px;
@@ -73,6 +78,7 @@ p {
     display: inline-block;
 }
 
+/* Inner square for the next game box */
 .next-inner-square {
     height: 50px;
     width: 125px;
@@ -82,6 +88,7 @@ p {
     margin-top: -25px;
 }
 
+/* top text for the next button */
 .next-text {
     position: absolute;
     width: 125px;
@@ -89,12 +96,14 @@ p {
     line-height: 25px;
 }
 
+/* Bottom text for the next button */
 .next-spacebar-text {
     position: absolute;
     top: 25px;
     width: 125px;
 }
 
+/* Next button text styling */
 #next {
     text-align: center;
     text-decoration: none;
@@ -104,6 +113,7 @@ p {
 
 
 /* word */
+/* parent for all of the question letters */
 .word-square {
     height: max-content;
     width: max-content;
@@ -113,7 +123,7 @@ p {
     padding: 5px;
 }
 
-
+/* Individual question letter box styling */
 .word-inner-square {
     display: inline-block;
     width: 20px;
@@ -121,6 +131,7 @@ p {
     margin: 2px;
 }
 
+/* center the letter */
 .word-text {
     position: absolute;
     width: 20px;
@@ -128,6 +139,7 @@ p {
     line-height: 20px;
 }
 
+/* styling for the hints box */
 .hint-box {
     padding: 10px;
     width: fit-content;
@@ -146,6 +158,7 @@ p {
     margin-top: 10px;
 }
 
+/* Element that holds all of the keyboard keys */
 .key-box {
     width: 35px;
     height: 35px;
@@ -153,6 +166,7 @@ p {
     margin: 3px;
 }
 
+/* Individual keys styling */
 .keys-box {
     padding: 2px;
     width: fit-content;
@@ -160,6 +174,7 @@ p {
     text-align: center;
 }
 
+/* Center the letter inside the key */
 .key-letter {
     height: 35px;
     width: 35px;

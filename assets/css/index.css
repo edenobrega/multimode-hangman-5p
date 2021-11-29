@@ -9,11 +9,12 @@ main {
     font-size: 20px;
     margin-top:10px;
 }
-
+/* parent 1 is the left section for single word game */
 .parent-1 {
     float: left;
 }
 
+/* parent 2 is the right section for the phrase word game */
 .parent-2 {
     float: right;
 }
