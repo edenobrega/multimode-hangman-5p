@@ -1,3 +1,5 @@
+Return back to the [README.md](README.md).
+# TESTING
 ## User Stories
 I tested my user stories
 - As a user I want to be able to choose to play with a timer or without one
@@ -50,8 +52,12 @@ For validation I used two tools from w3, for html I used [Nu Html Checker](https
 JSHint validation for index.js, showing no errors
 ![jshint validation on index.script](documentation/testing/jshint-index.png)
 
-JSHint validation for script.js, showing no errors, but two errors, the first is about variables and confusing semantics, but the variable in question is used only once and is directly above the loop, and the undefined variable is a [interface](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) that helps working with url params
+JSHint validation for script.js, showing no errors, but two warnings, the first is about variables and confusing semantics, but the variable in question is used only once and is directly above the loop which is think is better than having it inside and being continuesly called, and while i could just make multiple calls to each key of the keyboard, this way allows me the option to add different languages and punctuation to the html and not having to change this loop. The second warning is the same but i find having the variable at the top of the page better as its easier to find.
+And the undefined variable is a [interface](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams) that helps working with url params
 ![jshint validation on index.script](documentation/testing/jshint-script.png)
+
+JShint validation for modal.js, showing no errors
+![JShint validation for modal.js](documentation/testing.jshint-modal.png)
 
 CSS Validation for style.css showing no errors
 ![CSS validation for style.css](documentation/testing/css-validator-style.png)

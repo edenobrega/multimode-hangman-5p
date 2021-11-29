@@ -93,7 +93,7 @@ Have a random mode which uses an api like https://dictionaryapi.dev/ to get rand
 - To help with styling I used a css debugger to help me with things like positioning and size: [link](https://github.com/benscabbia/x-ray).
 - For my IDE I used Gitpod, [link](https://www.gitpod.io/).
 - I used githubs [projects](https://github.com/edenobrega/multimode-hangman-5p/projects/1) tab to track what i needed to do and what problems i came across 
-
+![github projects image](documentation/github-projects.png)
 ## Testing
 
 To see all testing see [TESTING.md](documentation/TESTING.md)
@@ -101,10 +101,10 @@ To see all testing see [TESTING.md](documentation/TESTING.md)
 ## Deployment
 The site was deployed to GitHub pages. The steps to deploy are as follows:
 
-    In the GitHub repository, navigate to the Settings tab.
-    From the Settings tab, scroll down until you see the 'Pages' button on the left.
-    From the Source section drop-down menu, select the Main branch.
-    Once the Main branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
+1. In the GitHub repository, navigate to the Settings tab.
+2. From the Settings tab, scroll down until you see the 'Pages' button on the left.
+3. From the Source section drop-down menu, select the Main branch.
+4. Once the Main branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
 
 The live link can be found here - https://edenobrega.github.io/multimode-hangman-5p/
 
